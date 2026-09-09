@@ -1,0 +1,1002 @@
+[
+  {
+    "question": "1. Which one is the correct sentence?",
+    "options": [
+      "I do not want nothing.",
+      "He is one of the best boy in the class.",
+      "He do not always go there.",
+      "He can not but go there."
+    ],
+    "answer": 3
+  },
+  {
+    "question": "2. Which one is the correct sentence?",
+    "options": [
+      "One of my friends are a talented doctor.",
+      "One of my friends is a talented doctor.",
+      "One of my friend is a talented doctor.",
+      "One of my friend are a talented doctor."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "3. Which one is the correct sentence?",
+    "options": [
+      "Neither he nor his brothers is present today.",
+      "Neither he nor his brothers are present today.",
+      "Neither his brothers nor he are present today.",
+      "Neither he or his brothers are present today."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "4. Which one is the correct sentence?",
+    "options": [
+      "Either the manager or the clerks has stolen the files.",
+      "Either the manager nor the clerks have stolen the files.",
+      "Either the manager or the clerks have stolen the files.",
+      "Either the manager or the clerks was stolen the files."
+    ],
+    "answer": 2
+  },
+  {
+    "question": "5. Which one is the correct sentence?",
+    "options": [
+      "The quality of these mangoes are not good.",
+      "The quality of these mangoes is not good.",
+      "The quality for these mangoes are not good.",
+      "The quality on these mangoes were not good."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "6. Which one is the correct sentence?",
+    "options": [
+      "Bread and butter are my favorite breakfast.",
+      "Bread and butter is my favorite breakfast.",
+      "Bread and butter have my favorite breakfast.",
+      "Bread and butter were my favorite breakfast."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "7. Which one is the correct sentence?",
+    "options": [
+      "The jury were unanimous in its decision.",
+      "The jury was divided in their opinions.",
+      "The jury was unanimous in its decision.",
+      "The jury have unanimous in its decision."
+    ],
+    "answer": 2
+  },
+  {
+    "question": "8. Which one is the correct sentence?",
+    "options": [
+      "More than one boy was present in the meeting.",
+      "More than one boy were present in the meeting.",
+      "More than one boys was present in the meeting.",
+      "More than one boys were present in the meeting."
+    ],
+    "answer": 0
+  },
+  {
+    "question": "9. Which one is the correct sentence?",
+    "options": [
+      "Fifty miles are a long distance to walk.",
+      "Fifty miles is a long distance to walk.",
+      "Fifty miles were a long distance to walk.",
+      "Fifty miles have a long distance to walk."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "10. Which one is the correct sentence?",
+    "options": [
+      "Many a student have tried to solve the problem.",
+      "Many a students has tried to solve the problem.",
+      "Many a student has tried to solve the problem.",
+      "Many student has tried to solve the problem."
+    ],
+    "answer": 2
+  },
+  {
+    "question": "11. Which one is the correct sentence?",
+    "options": [
+      "The price of rice is rising high.",
+      "The price of rice are rising high.",
+      "The prices of rice is rising high.",
+      "The price of rices are rising high."
+    ],
+    "answer": 0
+  },
+  {
+    "question": "12. Which one is the correct sentence?",
+    "options": [
+      "The rich is not always happy.",
+      "The rich are not always happy.",
+      "Rich are not always happy.",
+      "The rich is not happy always."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "13. Which one is the correct sentence?",
+    "options": [
+      "Physics are a difficult subject for many students.",
+      "Physics is a difficult subject for many students.",
+      "Physics were a difficult subject for many students.",
+      "Physics have a difficult subject for many students."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "14. Which one is the correct sentence?",
+    "options": [
+      "Every man, woman, and child were rescued.",
+      "Every man, woman, and child was rescued.",
+      "Every man, woman, and child have rescued.",
+      "Every man, woman, and child are rescued."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "15. Which one is the correct sentence?",
+    "options": [
+      "Time and tide wait for no man.",
+      "Time and tide waits for no man.",
+      "Time and tide is waiting for no man.",
+      "Time and tide has waited for no man."
+    ],
+    "answer": 0
+  },
+  {
+    "question": "16. Which one is the correct sentence?",
+    "options": [
+      "It is I who am responsible for this error.",
+      "It is I who is responsible for this error.",
+      "It is I who are responsible for this error.",
+      "It is me who am responsible for this error."
+    ],
+    "answer": 0
+  },
+  {
+    "question": "17. Which one is the correct sentence?",
+    "options": [
+      "Neither of the two proposals were accepted.",
+      "Neither of the two proposals was accepted.",
+      "Neither of the two proposal was accepted.",
+      "Neither from the two proposals were accepted."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "18. Which one is the correct sentence?",
+    "options": [
+      "The Chairman and Managing Director have arrived.",
+      "The Chairman and the Managing Director is arrived.",
+      "The Chairman and Managing Director is arrived.",
+      "The Chairman and Managing Director has arrived."
+    ],
+    "answer": 3
+  },
+  {
+    "question": "19. Which one is the correct sentence?",
+    "options": [
+      "The Chairman and the Managing Director have arrived.",
+      "The Chairman and the Managing Director has arrived.",
+      "Chairman and Managing Director has arrived.",
+      "The Chairman and Managing Director are arrived."
+    ],
+    "answer": 0
+  },
+  {
+    "question": "20. Which one is the correct sentence?",
+    "options": [
+      "Cattle is grazing in the field near the river.",
+      "Cattle are grazing in the field near the river.",
+      "Cattles are grazing in the field near the river.",
+      "A cattle is grazing in the field near the river."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "21. Which one is the correct sentence?",
+    "options": [
+      "He is senior than me in service.",
+      "He is senior to me in service.",
+      "He is senior from me in service.",
+      "He is senior more than me in service."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "22. Which one is the correct sentence?",
+    "options": [
+      "She prefers tea than coffee.",
+      "She prefers tea over coffee.",
+      "She prefers tea to coffee.",
+      "She prefers tea more than coffee."
+    ],
+    "answer": 2
+  },
+  {
+    "question": "23. Which one is the correct sentence?",
+    "options": [
+      "He refrained to take any hasty decision.",
+      "He refrained from taking any hasty decision.",
+      "He refrained on taking any hasty decision.",
+      "He refrained against taking any hasty decision."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "24. Which one is the correct sentence?",
+    "options": [
+      "The police insisted to inspect the luggage.",
+      "The police insisted on inspecting the luggage.",
+      "The police insisted for inspecting the luggage.",
+      "The police insisted at inspecting the luggage."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "25. Which one is the correct sentence?",
+    "options": [
+      "I forbade him from going to the cinema.",
+      "I forbade him not to go to the cinema.",
+      "I forbade him to go to the cinema.",
+      "I forbade him going to the cinema."
+    ],
+    "answer": 2
+  },
+  {
+    "question": "26. Which one is the correct sentence?",
+    "options": [
+      "He was accused for stealing the watch.",
+      "He was accused of stealing the watch.",
+      "He was accused with stealing the watch.",
+      "He was accused on stealing the watch."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "27. Which one is the correct sentence?",
+    "options": [
+      "The man died from cancer last month.",
+      "The man died of cancer last month.",
+      "The man died with cancer last month.",
+      "The man died by cancer last month."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "28. Which one is the correct sentence?",
+    "options": [
+      "He died of overworking during the exam week.",
+      "He died from overworking during the exam week.",
+      "He died for overworking during the exam week.",
+      "He died by overworking during the exam week."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "29. Which one is the correct sentence?",
+    "options": [
+      "You should comply with the instructions given.",
+      "You should comply to the instructions given.",
+      "You should comply by the instructions given.",
+      "You should comply on the instructions given."
+    ],
+    "answer": 0
+  },
+  {
+    "question": "30. Which one is the correct sentence?",
+    "options": [
+      "Paper is made of wood.",
+      "Paper is made from wood.",
+      "Paper is made with wood.",
+      "Paper is made by wood."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "31. Which one is the correct sentence?",
+    "options": [
+      "This table is made from solid mahogany wood.",
+      "This table is made of solid mahogany wood.",
+      "This table is made by solid mahogany wood.",
+      "This table is made out from solid mahogany wood."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "32. Which one is the correct sentence?",
+    "options": [
+      "He congratulated me for my brilliant success.",
+      "He congratulated me on my brilliant success.",
+      "He congratulated me at my brilliant success.",
+      "He congratulated me with my brilliant success."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "33. Which one is the correct sentence?",
+    "options": [
+      "We discussed about the matter yesterday evening.",
+      "We discussed the matter yesterday evening.",
+      "We discussed on the matter yesterday evening.",
+      "We discussed regarding the matter yesterday evening."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "34. Which one is the correct sentence?",
+    "options": [
+      "The committee is composed by seven members.",
+      "The committee is composed of seven members.",
+      "The committee is composed with seven members.",
+      "The committee is composed from seven members."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "35. Which one is the correct sentence?",
+    "options": [
+      "He resides at Dhaka in Bangladesh.",
+      "He resides in Dhaka at Bangladesh.",
+      "He resides on Dhaka in Bangladesh.",
+      "He resides at Dhaka on Bangladesh."
+    ],
+    "answer": 0
+  },
+  {
+    "question": "36. Which one is the correct sentence?",
+    "options": [
+      "Divide the apples among the two brothers.",
+      "Divide the apples between the two brothers.",
+      "Divide the apples in between the two brothers.",
+      "Divide the apples into the two brothers."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "37. Which one is the correct sentence?",
+    "options": [
+      "Distribute the sweets between all five students.",
+      "Distribute the sweets among all five students.",
+      "Distribute the sweets in all five students.",
+      "Distribute the sweets to all five students equally."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "38. Which one is the correct sentence?",
+    "options": [
+      "He works hard lest he should fail in the examination.",
+      "He works hard lest he will fail in the examination.",
+      "He works hard lest he should not fail in the examination.",
+      "He works hard lest he may fail in the examination."
+    ],
+    "answer": 0
+  },
+  {
+    "question": "39. Which one is the correct sentence?",
+    "options": [
+      "Scarcely had I reached the station than the train left.",
+      "Scarcely had I reached the station when the train left.",
+      "Scarcely I had reached the station when the train left.",
+      "Scarcely had I reached the station then the train left."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "40. Which one is the correct sentence?",
+    "options": [
+      "No sooner had the teacher entered the classroom when the students stood up.",
+      "No sooner had the teacher entered the classroom then the students stood up.",
+      "No sooner had the teacher entered the classroom than the students stood up.",
+      "No sooner the teacher had entered the classroom than the students stood up."
+    ],
+    "answer": 2
+  },
+  {
+    "question": "41. Which one is the correct sentence?",
+    "options": [
+      "Hardly had we started our journey than it began to rain.",
+      "Hardly had we started our journey when it began to rain.",
+      "Hardly we had started our journey when it began to rain.",
+      "Hardly had we started our journey then it began to rain."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "42. Which one is the correct sentence?",
+    "options": [
+      "Unless you do not work hard, you will not succeed.",
+      "Unless you work hard, you will succeed.",
+      "Unless you work hard, you will not succeed.",
+      "Unless you do work hard, you will fail not."
+    ],
+    "answer": 2
+  },
+  {
+    "question": "43. Which one is the correct sentence?",
+    "options": [
+      "Although he is poor, but he is honest.",
+      "Although he is poor, yet he is honest.",
+      "Although he is poor, he is dishonest.",
+      "Although he is poor, and he is honest."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "44. Which one is the correct sentence?",
+    "options": [
+      "Both Karim as well as Rahim went to the stadium.",
+      "Both Karim and Rahim went to the stadium.",
+      "Both Karim along with Rahim went to the stadium.",
+      "Both Karim with Rahim went to the stadium."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "45. Which one is the correct sentence?",
+    "options": [
+      "Not only he but also his friends is attending the seminar.",
+      "Not only he but also his friends are attending the seminar.",
+      "Not only he or also his friends are attending the seminar.",
+      "Not only he but his friends also is attending the seminar."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "46. Which one is the correct sentence?",
+    "options": [
+      "Since three hours, it has been raining continuously.",
+      "It is raining continuously for three hours.",
+      "It has been raining continuously for three hours.",
+      "It has been raining continuously since three hours."
+    ],
+    "answer": 2
+  },
+  {
+    "question": "47. Which one is the correct sentence?",
+    "options": [
+      "He has been living in Dhaka since 2015.",
+      "He is living in Dhaka since 2015.",
+      "He has been living in Dhaka for 2015.",
+      "He lived in Dhaka since 2015."
+    ],
+    "answer": 0
+  },
+  {
+    "question": "48. Which one is the correct sentence?",
+    "options": [
+      "The patient had died before the doctor came.",
+      "The patient died before the doctor had come.",
+      "The patient has died before the doctor came.",
+      "The patient was died before the doctor came."
+    ],
+    "answer": 0
+  },
+  {
+    "question": "49. Which one is the correct sentence?",
+    "options": [
+      "The doctor had come after the patient died.",
+      "The doctor came after the patient had died.",
+      "The doctor came after the patient died.",
+      "The doctor has come after the patient had died."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "50. Which one is the correct sentence?",
+    "options": [
+      "If I was a king, I would help the poor.",
+      "If I am a king, I would help the poor.",
+      "If I were a king, I would help the poor.",
+      "If I had been a king, I will help the poor."
+    ],
+    "answer": 2
+  },
+  {
+    "question": "51. Which one is the correct sentence?",
+    "options": [
+      "Had I seen him before, I would have warned him.",
+      "Had I seen him before, I would warn him.",
+      "Had I seen him before, I will have warned him.",
+      "If I saw him before, I would have warned him."
+    ],
+    "answer": 0
+  },
+  {
+    "question": "52. Which one is the correct sentence?",
+    "options": [
+      "If you work hard, you would pass the exam.",
+      "If you worked hard, you will pass the exam.",
+      "If you work hard, you will pass the exam.",
+      "If you had worked hard, you will pass the exam."
+    ],
+    "answer": 2
+  },
+  {
+    "question": "53. Which one is the correct sentence?",
+    "options": [
+      "If he had studied attentively, he would pass the exam.",
+      "If he studied attentively, he would have passed the exam.",
+      "If he had studied attentively, he would have passed the exam.",
+      "If he has studied attentively, he would have passed the exam."
+    ],
+    "answer": 2
+  },
+  {
+    "question": "54. Which one is the correct sentence?",
+    "options": [
+      "I wish I was a famous poet.",
+      "I wish I am a famous poet.",
+      "I wish I were a famous poet.",
+      "I wish I have been a famous poet."
+    ],
+    "answer": 2
+  },
+  {
+    "question": "55. Which one is the correct sentence?",
+    "options": [
+      "He speaks as if he knows everything.",
+      "He speaks as if he knew everything.",
+      "He speaks as if he has known everything.",
+      "He speaks as though he is knowing everything."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "56. Which one is the correct sentence?",
+    "options": [
+      "He spoke as if he knew everything.",
+      "He spoke as if he had known everything.",
+      "He spoke as if he knows everything.",
+      "He spoke as if he was knowing everything."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "57. Which one is the correct sentence?",
+    "options": [
+      "It is time we change our habits.",
+      "It is time we changed our habits.",
+      "It is time we have changed our habits.",
+      "It is high time we will change our habits."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "58. Which one is the correct sentence?",
+    "options": [
+      "I look forward to hear from you soon.",
+      "I look forward to hearing from you soon.",
+      "I look forward to have heard from you soon.",
+      "I look forward hearing from you soon."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "59. Which one is the correct sentence?",
+    "options": [
+      "He is used to work hard late at night.",
+      "He is used to working hard late at night.",
+      "He used to working hard late at night.",
+      "He is used working hard late at night."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "60. Which one is the correct sentence?",
+    "options": [
+      "Would you mind to open the door?",
+      "Would you mind open the door?",
+      "Would you mind opening the door?",
+      "Would you mind in opening the door?"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "61. Which one is the correct sentence?",
+    "options": [
+      "Walking along the road, a snake bit him.",
+      "While he was walking along the road, a snake bit him.",
+      "While walking along the road, a snake bit him.",
+      "Walking on the road, he was bit by a snake."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "62. Which one is the correct sentence?",
+    "options": [
+      "Being a rainy day, we decided to stay at home.",
+      "It being a rainy day, we decided to stay at home.",
+      "Having a rainy day, we decided to stay at home.",
+      "As being a rainy day, we decided to stay at home."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "63. Which one is the correct sentence?",
+    "options": [
+      "I saw a dead bird flying in the sky.",
+      "Flying in the sky, I saw a dead bird.",
+      "While flying in the sky, I saw a dead bird.",
+      "I saw a bird flying dead in the sky."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "64. Which one is the correct sentence?",
+    "options": [
+      "Running fast, the goal was reached by the athlete.",
+      "Running fast, the athlete reached the goal.",
+      "Having run fast, the goal was reached by the athlete.",
+      "Running fast, reaching the goal was done by the athlete."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "65. Which one is the correct sentence?",
+    "options": [
+      "The boy who works hard he will succeed.",
+      "The boy who works hard will succeed.",
+      "The boy that works hard he will succeed.",
+      "The boy whom works hard will succeed."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "66. Which one is the correct sentence?",
+    "options": [
+      "This is the man whom I think is trustworthy.",
+      "This is the man who I think is trustworthy.",
+      "This is the man whose I think is trustworthy.",
+      "This is the man which I think is trustworthy."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "67. Which one is the correct sentence?",
+    "options": [
+      "Let you and I go to the playground.",
+      "Let you and he go to the playground.",
+      "Let you and him go to the playground.",
+      "Let I and you go to the playground."
+    ],
+    "answer": 2
+  },
+  {
+    "question": "68. Which one is the correct sentence?",
+    "options": [
+      "Between you and I, he is a liar.",
+      "Between you and me, he is a liar.",
+      "Between he and you, he is a liar.",
+      "Between you and him, I am a liar."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "69. Which one is the correct sentence?",
+    "options": [
+      "I, you and he are guilty.",
+      "You, he and I are guilty.",
+      "I, he and you are guilty.",
+      "You, I and he are guilty."
+    ],
+    "answer": 0
+  },
+  {
+    "question": "70. Which one is the correct sentence?",
+    "options": [
+      "You, he and I will go there tomorrow.",
+      "I, you and he will go there tomorrow.",
+      "He, you and I will go there tomorrow.",
+      "You, I and he will go there tomorrow."
+    ],
+    "answer": 0
+  },
+  {
+    "question": "71. Which one is the correct sentence?",
+    "options": [
+      "Each of the girls performed their duties well.",
+      "Each of the girls performed her duties well.",
+      "Each of the girl performed her duties well.",
+      "Each of the girls performed ones duties well."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "72. Which one is the correct sentence?",
+    "options": [
+      "One should do his duty sincerely.",
+      "One should do her duty sincerely.",
+      "One should do one's duty sincerely.",
+      "One should do their duty sincerely."
+    ],
+    "answer": 2
+  },
+  {
+    "question": "73. Which one is the correct sentence?",
+    "options": [
+      "He availed of the opportunity without delay.",
+      "He availed himself of the opportunity without delay.",
+      "He availed himself the opportunity without delay.",
+      "He availed the opportunity without delay."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "74. Which one is the correct sentence?",
+    "options": [
+      "She absent from the class yesterday.",
+      "She absented herself from the class yesterday.",
+      "She absented from the class yesterday.",
+      "She was absented herself from the class yesterday."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "75. Which one is the correct sentence?",
+    "options": [
+      "All the members of the family love one another.",
+      "All the members of the family love each other.",
+      "The two brothers love one another dearly.",
+      "All members of family love each other."
+    ],
+    "answer": 0
+  },
+  {
+    "question": "76. Which one is the correct sentence?",
+    "options": [
+      "The two sisters help one another in times of need.",
+      "The two sisters help each other in times of need.",
+      "The two sisters helps each other in times of need.",
+      "Two sisters help one another in times of need."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "77. Which one is the correct sentence?",
+    "options": [
+      "He asked me that why I was late.",
+      "He asked me why was I late.",
+      "He asked me why I was late.",
+      "He asked me why I am late."
+    ],
+    "answer": 2
+  },
+  {
+    "question": "78. Which one is the correct sentence?",
+    "options": [
+      "Tell me where do you live.",
+      "Tell me where you live.",
+      "Tell me where live you.",
+      "Tell me that where you live."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "79. Which one is the correct sentence?",
+    "options": [
+      "Do you know where does he live?",
+      "Do you know where he lives?",
+      "Do you know where lives he?",
+      "Do you know that where he lives?"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "80. Which one is the correct sentence?",
+    "options": [
+      "He told that he would complete the task.",
+      "He told me that he would complete the task.",
+      "He said me that he would complete the task.",
+      "He told to me that he would complete the task."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "81. Which one is the correct sentence?",
+    "options": [
+      "I have bought five furnitures for my new flat.",
+      "I have bought five pieces of furniture for my new flat.",
+      "I have bought five piece of furnitures for my new flat.",
+      "I have bought five items of furnitures for my new flat."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "82. Which one is the correct sentence?",
+    "options": [
+      "The poet gave me some good advices.",
+      "The poet gave me a good advice.",
+      "The poet gave me a piece of good advice.",
+      "The poet gave me many advices."
+    ],
+    "answer": 2
+  },
+  {
+    "question": "83. Which one is the correct sentence?",
+    "options": [
+      "The scenery of Cox's Bazar are very charming.",
+      "The sceneries of Cox's Bazar is very charming.",
+      "The scenery of Cox's Bazar is very charming.",
+      "The sceneries of Cox's Bazar are very charming."
+    ],
+    "answer": 2
+  },
+  {
+    "question": "84. Which one is the correct sentence?",
+    "options": [
+      "He has given me ten thousand rupees.",
+      "He has given me ten thousands rupees.",
+      "He has given me ten thousands rupee.",
+      "He has given me ten thousand of rupees."
+    ],
+    "answer": 0
+  },
+  {
+    "question": "85. Which one is the correct sentence?",
+    "options": [
+      "Two-thirds of the work have been finished.",
+      "Two-third of the work has been finished.",
+      "Two-thirds of the work has been finished.",
+      "Two-thirds of the works are finished."
+    ],
+    "answer": 2
+  },
+  {
+    "question": "86. Which one is the correct sentence?",
+    "options": [
+      "Two-thirds of the students is present today.",
+      "Two-thirds of the students are present today.",
+      "Two-third of the students are present today.",
+      "Two-thirds of student are present today."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "87. Which one is the correct sentence?",
+    "options": [
+      "He is relatively better today.",
+      "He is comparatively better today.",
+      "He is relatively well today.",
+      "He is more relatively better today."
+    ],
+    "answer": 2
+  },
+  {
+    "question": "88. Which one is the correct sentence?",
+    "options": [
+      "Dhaka is larger than any cities in Bangladesh.",
+      "Dhaka is larger than any other city in Bangladesh.",
+      "Dhaka is larger than all city in Bangladesh.",
+      "Dhaka is larger than any other cities in Bangladesh."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "89. Which one is the correct sentence?",
+    "options": [
+      "Akbar was one of the greatest kings of India.",
+      "Akbar was one of the greatest king of India.",
+      "Akbar was greatest king of India.",
+      "Akbar was one of great king of India."
+    ],
+    "answer": 0
+  },
+  {
+    "question": "90. Which one is the correct sentence?",
+    "options": [
+      "No other boy in the class is as tall than he.",
+      "No other boy in the class is so tall as he.",
+      "No other boys in the class is as tall as he.",
+      "No other boy in the class are as tall as he."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "91. Which one is the correct sentence?",
+    "options": [
+      "Shakespeare is greater than any poet in England.",
+      "Shakespeare is greater than any other poet in England.",
+      "Shakespeare is greater than all poet in England.",
+      "Shakespeare is more greater than any other poet in England."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "92. Which one is the correct sentence?",
+    "options": [
+      "He is as clever as her.",
+      "He is as clever as she.",
+      "He is as clever like her.",
+      "He is as clever than she."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "93. Which one is the correct sentence?",
+    "options": [
+      "The climate of Cox's Bazar is better than Dhaka.",
+      "The climate of Cox's Bazar is better than that of Dhaka.",
+      "The climate of Cox's Bazar is better than those of Dhaka.",
+      "The climate of Cox's Bazar is better from Dhaka."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "94. Which one is the correct sentence?",
+    "options": [
+      "The roads of Chittagong are wider than Dhaka.",
+      "The roads of Chittagong are wider than that of Dhaka.",
+      "The roads of Chittagong are wider than those of Dhaka.",
+      "The roads of Chittagong are wider from Dhaka."
+    ],
+    "answer": 2
+  },
+  {
+    "question": "95. Which one is the correct sentence?",
+    "options": [
+      "He was hanged for murder yesterday.",
+      "He was hung for murder yesterday.",
+      "He was hunged for murder yesterday.",
+      "He had hung for murder yesterday."
+    ],
+    "answer": 0
+  },
+  {
+    "question": "96. Which one is the correct sentence?",
+    "options": [
+      "The coat was hung on the wall hook.",
+      "The coat was hanged on the wall hook.",
+      "The coat hunged on the wall hook.",
+      "The coat was hang on the wall hook."
+    ],
+    "answer": 0
+  },
+  {
+    "question": "97. Which one is the correct sentence?",
+    "options": [
+      "He lay on the bed for two hours yesterday.",
+      "He lied on the bed for two hours yesterday.",
+      "He laid on the bed for two hours yesterday.",
+      "He was lain on the bed for two hours yesterday."
+    ],
+    "answer": 0
+  },
+  {
+    "question": "98. Which one is the correct sentence?",
+    "options": [
+      "She laid the book on the table gently.",
+      "She lay the book on the table gently.",
+      "She lied the book on the table gently.",
+      "She has lain the book on the table gently."
+    ],
+    "answer": 0
+  },
+  {
+    "question": "99. Which one is the correct sentence?",
+    "options": [
+      "He spoke the truth and I also didn't lie.",
+      "He spoke the truth, and I didn't lie neither.",
+      "He spoke the truth and I didn't lie too.",
+      "He spoke the truth, nor did I lie."
+    ],
+    "answer": 3
+  },
+  {
+    "question": "100. Which one is the correct sentence?",
+    "options": [
+      "Hardly I had left the house when it started raining.",
+      "No sooner I had left the house than it started raining.",
+      "Had I left the house, it started raining.",
+      "Scarcely had I left the house when it started raining."
+    ],
+    "answer": 3
+  }
+]

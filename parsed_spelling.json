@@ -1,0 +1,1502 @@
+[
+  {
+    "question": "1. Choose the correctly spelt word:",
+    "options": [
+      "Misspell",
+      "Mispell",
+      "Mispel",
+      "Missspel"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "2. Choose the correctly spelt word:",
+    "options": [
+      "Commitee",
+      "Committee",
+      "Comittee",
+      "Commite"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "3. Choose the correctly spelt word:",
+    "options": [
+      "Occurrence",
+      "Occurance",
+      "Ocurrence",
+      "Occurence"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "4. Choose the correctly spelt word:",
+    "options": [
+      "Bureaucracy",
+      "Burocracy",
+      "Beaurocracy",
+      "Beurocracy"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "5. Choose the correctly spelt word:",
+    "options": [
+      "Accommodate",
+      "Acommodate",
+      "Accomodate",
+      "Acomodate"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "6. Choose the correctly spelt word:",
+    "options": [
+      "Embarrassment",
+      "Embarasment",
+      "Embarassment",
+      "Embarassment"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "7. Choose the correctly spelt word:",
+    "options": [
+      "Questionnaire",
+      "Questionaire",
+      "Questionnarie",
+      "Questioner"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "8. Choose the correctly spelt word:",
+    "options": [
+      "Millennium",
+      "Millenium",
+      "Milennium",
+      "Milenium"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "9. Choose the correctly spelt word:",
+    "options": [
+      "Privilege",
+      "Priviledge",
+      "Prevelege",
+      "Previlage"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "10. Choose the correctly spelt word:",
+    "options": [
+      "Maintenance",
+      "Maintainance",
+      "Maintenence",
+      "Maintanance"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "11. Choose the correctly spelt word:",
+    "options": [
+      "Entrepreneur",
+      "Enterpreneur",
+      "Entreprenur",
+      "Enterprenur"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "12. Choose the correctly spelt word:",
+    "options": [
+      "Diarrhoea",
+      "Diarrhea",
+      "Diarhea",
+      "Diahroea"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "13. Choose the correctly spelt word:",
+    "options": [
+      "Pronunciation",
+      "Pronounciation",
+      "Pronunciasion",
+      "Pronunsiation"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "14. Choose the correctly spelt word:",
+    "options": [
+      "Separation",
+      "Seperation",
+      "Saparation",
+      "Sapration"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "15. Choose the correctly spelt word:",
+    "options": [
+      "Surveillance",
+      "Serveillance",
+      "Surveilance",
+      "Survellance"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "16. Choose the correctly spelt word:",
+    "options": [
+      "Liaison",
+      "Laison",
+      "Liason",
+      "Liaision"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "17. Choose the correctly spelt word:",
+    "options": [
+      "Renaissance",
+      "Renasance",
+      "Renaisaance",
+      "Renaisance"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "18. Choose the correctly spelt word:",
+    "options": [
+      "Mischievous",
+      "Mischevous",
+      "Mischievousness",
+      "Mischevious"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "19. Choose the correctly spelt word:",
+    "options": [
+      "Assessment",
+      "Assesment",
+      "Asesment",
+      "Asessment"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "20. Choose the correctly spelt word:",
+    "options": [
+      "Guerrilla",
+      "Guerilla",
+      "Gurilla",
+      "Guerila"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "21. Choose the correctly spelt word:",
+    "options": [
+      "Unnecessary",
+      "Unnecessary",
+      "Unnecesary",
+      "Unneccesary"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "22. Choose the correctly spelt word:",
+    "options": [
+      "Auxiliary",
+      "Auxilary",
+      "Auxillary",
+      "Auxilery"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "23. Choose the correctly spelt word:",
+    "options": [
+      "Hierarchy",
+      "Heirarchy",
+      "Hiererchy",
+      "Hirarchy"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "24. Choose the correctly spelt word:",
+    "options": [
+      "Supersede",
+      "Supercede",
+      "Superseed",
+      "Supersead"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "25. Choose the correctly spelt word:",
+    "options": [
+      "Rhythm",
+      "Rythm",
+      "Rhythim",
+      "Rithm"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "26. Choose the correctly spelt word:",
+    "options": [
+      "Kindergarten",
+      "Kindergarden",
+      "Kindergartan",
+      "Kindergardin"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "27. Choose the correctly spelt word:",
+    "options": [
+      "Vacuum",
+      "Vaccum",
+      "Vacume",
+      "Vacumm"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "28. Choose the correctly spelt word:",
+    "options": [
+      "Conscientious",
+      "Conscientous",
+      "Conscentious",
+      "Conscentious"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "29. Choose the correctly spelt word:",
+    "options": [
+      "Continuous",
+      "Continouse",
+      "Continious",
+      "Contineous"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "30. Choose the correctly spelt word:",
+    "options": [
+      "Professional",
+      "Proffesional",
+      "Profeshional",
+      "Proffesional"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "31. Choose the correctly spelt word:",
+    "options": [
+      "Restaurant",
+      "Resturant",
+      "Resterant",
+      "Restaraunt"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "32. Choose the correctly spelt word:",
+    "options": [
+      "Sovereign",
+      "Soverign",
+      "Soverign",
+      "Sovreign"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "33. Choose the correctly spelt word:",
+    "options": [
+      "Exaggerate",
+      "Exagerate",
+      "Exagperate",
+      "Exaggarate"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "34. Choose the correctly spelt word:",
+    "options": [
+      "Dysentery",
+      "Dysentary",
+      "Dissentery",
+      "Disentery"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "35. Choose the correctly spelt word:",
+    "options": [
+      "Hypocrisy",
+      "Hypocrasy",
+      "Hipocrisy",
+      "Hypocrisey"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "36. Choose the correctly spelt word:",
+    "options": [
+      "Recommendation",
+      "Recomendation",
+      "Recommondation",
+      "Recommondasion"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "37. Choose the correctly spelt word:",
+    "options": [
+      "Millennium",
+      "Millinium",
+      "Melennium",
+      "Millineum"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "38. Choose the correctly spelt word:",
+    "options": [
+      "Guarantee",
+      "Garantee",
+      "Guarrantee",
+      "Guarente"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "39. Choose the correctly spelt word:",
+    "options": [
+      "Idiosyncrasy",
+      "Idiosyncrasie",
+      "Idiosincrasy",
+      "Idiosyncrisy"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "40. Choose the correctly spelt word:",
+    "options": [
+      "Plagiarism",
+      "Plagerism",
+      "Plagaiarism",
+      "Plagiarizam"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "41. Choose the correctly spelt word:",
+    "options": [
+      "Unforeseen",
+      "Unforscen",
+      "Unforseen",
+      "Unforescen"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "42. Choose the correctly spelt word:",
+    "options": [
+      "Magnificence",
+      "Magneficence",
+      "Magnificense",
+      "Magneficense"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "43. Choose the correctly spelt word:",
+    "options": [
+      "Immediate",
+      "Imediate",
+      "Immediat",
+      "Immeadiate"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "44. Choose the correctly spelt word:",
+    "options": [
+      "Miscellaneous",
+      "Miscellanious",
+      "Miscelaneous",
+      "Misscellaneous"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "45. Choose the correctly spelt word:",
+    "options": [
+      "Parallel",
+      "Parallell",
+      "Paralel",
+      "Parallal"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "46. Choose the correctly spelt word:",
+    "options": [
+      "Millennium",
+      "Milleanium",
+      "Millinneum",
+      "Milinneam"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "47. Choose the correctly spelt word:",
+    "options": [
+      "Millennium",
+      "Millenium",
+      "Mellinium",
+      "Mileanium"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "48. Choose the correctly spelt word:",
+    "options": [
+      "Pseudonym",
+      "Pseidonym",
+      "Pseudonim",
+      "Psuadonym"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "49. Choose the correctly spelt word:",
+    "options": [
+      "Discipline",
+      "Descipline",
+      "Disipline",
+      "Dissipline"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "50. Choose the correctly spelt word:",
+    "options": [
+      "Aggression",
+      "Agression",
+      "Aggresion",
+      "Agresson"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "51. Choose the correctly spelt word:",
+    "options": [
+      "Homogeneous",
+      "Homogenous",
+      "Homegeneous",
+      "Homogineous"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "52. Choose the correctly spelt word:",
+    "options": [
+      "Simultaneous",
+      "Simultaneus",
+      "Semultaneous",
+      "Simultaneos"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "53. Choose the correctly spelt word:",
+    "options": [
+      "Questionnaire",
+      "Questionare",
+      "Questionnair",
+      "Questioner"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "54. Choose the correctly spelt word:",
+    "options": [
+      "Persistent",
+      "Persistant",
+      "Persastent",
+      "Persistentt"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "55. Choose the correctly spelt word:",
+    "options": [
+      "Remuneration",
+      "Renumeration",
+      "Remunerasion",
+      "Renumerasion"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "56. Choose the correctly spelt word:",
+    "options": [
+      "Pneumonia",
+      "Neumonia",
+      "Pneumania",
+      "Pnumonia"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "57. Choose the correctly spelt word:",
+    "options": [
+      "Hemorrhage",
+      "Hemorage",
+      "Hemmorhage",
+      "Hemorrage"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "58. Choose the correctly spelt word:",
+    "options": [
+      "Millennium",
+      "Milenium",
+      "Milennium",
+      "Mellenium"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "59. Choose the correctly spelt word:",
+    "options": [
+      "Sovereign",
+      "Soverain",
+      "Soverign",
+      "Sovereign"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "60. Choose the correctly spelt word:",
+    "options": [
+      "Indispensable",
+      "Indispensible",
+      "Indespensable",
+      "Indespensible"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "61. Choose the correctly spelt word:",
+    "options": [
+      "Millennium",
+      "Accomodate",
+      "Embarasment",
+      "Comittee"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "62. Choose the correctly spelt word:",
+    "options": [
+      "Recieve",
+      "Privilege",
+      "Seperation",
+      "Maintainance"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "63. Choose the correctly spelt word:",
+    "options": [
+      "Burocracy",
+      "Questionaire",
+      "Surveillance",
+      "Acknowledge"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "64. Choose the correctly spelt word:",
+    "options": [
+      "Guerrilla",
+      "Enterpreneur",
+      "Exagerate",
+      "Resturant"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "65. Choose the correctly spelt word:",
+    "options": [
+      "Diarhea",
+      "Pronunciation",
+      "Suprise",
+      "Occurance"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "66. Choose the correctly spelt word:",
+    "options": [
+      "Liaison",
+      "Mischievious",
+      "Hiererchy",
+      "Rythm"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "67. Choose the correctly spelt word:",
+    "options": [
+      "Supercede",
+      "Renaissance",
+      "Auxilary",
+      "Kindergarden"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "68. Choose the correctly spelt word:",
+    "options": [
+      "Vaccum",
+      "Assessment",
+      "Conscentious",
+      "Hypocrasy"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "69. Choose the correctly spelt word:",
+    "options": [
+      "Remuneration",
+      "Recomendation",
+      "Plagerism",
+      "Indespensable"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "70. Choose the correctly spelt word:",
+    "options": [
+      "Dysentary",
+      "Unnecessary",
+      "Misspill",
+      "Agression"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "71. Choose the correctly spelt word:",
+    "options": [
+      "Homogenous",
+      "Pneumonia",
+      "Semultaneous",
+      "Hemmorhage"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "72. Choose the correctly spelt word:",
+    "options": [
+      "Continuous",
+      "Soverign",
+      "Persistant",
+      "Idiosyncrisy"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "73. Choose the correctly spelt word:",
+    "options": [
+      "Magnificence",
+      "Descipline",
+      "Miscellanious",
+      "Parallell"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "74. Choose the correctly spelt word:",
+    "options": [
+      "Guarentee",
+      "Pseudonym",
+      "Unforscen",
+      "Imediate"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "75. Choose the correctly spelt word:",
+    "options": [
+      "Apparent",
+      "Conquerror",
+      "Endevour",
+      "Forefeat"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "76. Choose the correctly spelt word:",
+    "options": [
+      "Environment",
+      "Calender",
+      "Catagorie",
+      "Cemetery"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "77. Choose the correctly spelt word:",
+    "options": [
+      "Acknowledge",
+      "Amateur",
+      "Bouqet",
+      "Camoflage"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "78. Choose the correctly spelt word:",
+    "options": [
+      "Exhilarate",
+      "Foregn",
+      "Ginnuiness",
+      "Grammer"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "79. Choose the correctly spelt word:",
+    "options": [
+      "Inoculate",
+      "Handkercheif",
+      "Geopardise",
+      "Hierachy"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "80. Choose the correctly spelt word:",
+    "options": [
+      "Judgment",
+      "Knowledgeable",
+      "Leisure",
+      "Lutenant"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "81. Choose the correctly spelt word:",
+    "options": [
+      "Millennium",
+      "Neighbor",
+      "Noticeable",
+      "Obsession"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "82. Choose the correctly spelt word:",
+    "options": [
+      "Parasite",
+      "Paralell",
+      "Paveilion",
+      "Pearticular"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "83. Choose the correctly spelt word:",
+    "options": [
+      "Questionnaire",
+      "Recomand",
+      "Relavant",
+      "Resillience"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "84. Choose the correctly spelt word:",
+    "options": [
+      "Schedule",
+      "Seperate",
+      "Segeant",
+      "Syllable"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "85. Choose the correctly spelt word:",
+    "options": [
+      "Temperature",
+      "Temprament",
+      "Tendansy",
+      "Threshold"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "86. Choose the correctly spelt word:",
+    "options": [
+      "Anonymous",
+      "Ananimous",
+      "Annonymous",
+      "Anonymos"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "87. Choose the correctly spelt word:",
+    "options": [
+      "Bankruptcy",
+      "Bankruptsy",
+      "Bankrupesy",
+      "Bankrupcy"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "88. Choose the correctly spelt word:",
+    "options": [
+      "Camouflage",
+      "Camoflage",
+      "Cameoflage",
+      "Camouflag"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "89. Choose the correctly spelt word:",
+    "options": [
+      "Delinquent",
+      "Delinquint",
+      "Delinquand",
+      "Delinkwent"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "90. Choose the correctly spelt word:",
+    "options": [
+      "Extravagant",
+      "Extravagunt",
+      "Extravegant",
+      "Extravegent"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "91. Choose the correctly spelt word:",
+    "options": [
+      "Fascination",
+      "Faccination",
+      "Fasination",
+      "Facination"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "92. Choose the correctly spelt word:",
+    "options": [
+      "Gorgeous",
+      "Gorgious",
+      "Gorgeos",
+      "Gorjeous"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "93. Choose the correctly spelt word:",
+    "options": [
+      "Heirloom",
+      "Hairloom",
+      "Heirloom",
+      "Herloom"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "94. Choose the correctly spelt word:",
+    "options": [
+      "Inevitable",
+      "Inevitible",
+      "Inevatible",
+      "Inevatible"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "95. Choose the correctly spelt word:",
+    "options": [
+      "Jeopardy",
+      "Jeoparty",
+      "Geopardy",
+      "Jeopardee"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "96. Choose the correctly spelt word:",
+    "options": [
+      "Kaleidoscope",
+      "Kaleidoscope",
+      "Kaleidascope",
+      "Kaliedoscope"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "97. Choose the correctly spelt word:",
+    "options": [
+      "Lieutenant",
+      "Lutenant",
+      "Leutnant",
+      "Lieftenant"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "98. Choose the correctly spelt word:",
+    "options": [
+      "Magnificent",
+      "Magneficent",
+      "Magnificint",
+      "Magneficint"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "99. Choose the correctly spelt word:",
+    "options": [
+      "Negotiate",
+      "Negoceate",
+      "Negoteate",
+      "Negoceat"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "100. Choose the correctly spelt word:",
+    "options": [
+      "Omission",
+      "Emmision",
+      "Omision",
+      "Ommision"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "101. Choose the correctly spelt word:",
+    "options": [
+      "Phenomenon",
+      "Phenomenan",
+      "Phenominon",
+      "Phenominan"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "102. Choose the correctly spelt word:",
+    "options": [
+      "Quarantine",
+      "Quarentine",
+      "Quarantinee",
+      "Karantine"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "103. Choose the correctly spelt word:",
+    "options": [
+      "Rebellious",
+      "Rebelious",
+      "Rebellos",
+      "Rebelios"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "104. Choose the correctly spelt word:",
+    "options": [
+      "Sanctuary",
+      "Sanctuery",
+      "Sanktuary",
+      "Sanctury"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "105. Choose the correctly spelt word:",
+    "options": [
+      "Turbulence",
+      "Turbulense",
+      "Terbulence",
+      "Turbulance"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "106. Choose the correctly spelt word:",
+    "options": [
+      "Unanimous",
+      "Unanimos",
+      "Unanimus",
+      "Uneanimous"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "107. Choose the correctly spelt word:",
+    "options": [
+      "Vigilance",
+      "Vigilence",
+      "Veigilance",
+      "Vijilance"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "108. Choose the correctly spelt word:",
+    "options": [
+      "Withdrawal",
+      "Withdrawl",
+      "Withdraweal",
+      "Withdrowal"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "109. Choose the correctly spelt word:",
+    "options": [
+      "Xenophobia",
+      "Xenofobia",
+      "Zenophobia",
+      "Xenophobea"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "110. Choose the correctly spelt word:",
+    "options": [
+      "Yielding",
+      "Yeilding",
+      "Yieldeng",
+      "Yeildeng"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "111. Choose the correctly spelt word:",
+    "options": [
+      "Zealously",
+      "Zealosly",
+      "Zealousely",
+      "Zelously"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "112. Choose the correctly spelt word:",
+    "options": [
+      "Abbreviation",
+      "Abreviation",
+      "Abbreviassion",
+      "Abrevation"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "113. Choose the correctly spelt word:",
+    "options": [
+      "Beneficial",
+      "Benefisial",
+      "Benefishel",
+      "Benefitial"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "114. Choose the correctly spelt word:",
+    "options": [
+      "Commemorate",
+      "Comemorate",
+      "Commemorat",
+      "Comemmorate"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "115. Choose the correctly spelt word:",
+    "options": [
+      "Deductible",
+      "Deductable",
+      "Diductible",
+      "Deductabl"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "116. Choose the correctly spelt word:",
+    "options": [
+      "Equivalent",
+      "Equavalent",
+      "Equivilent",
+      "Equivelent"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "117. Choose the correctly spelt word:",
+    "options": [
+      "Frustrated",
+      "Frusterated",
+      "Frustreted",
+      "Frostrated"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "118. Choose the correctly spelt word:",
+    "options": [
+      "Grievance",
+      "Greivance",
+      "Grivance",
+      "Grievence"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "119. Choose the correctly spelt word:",
+    "options": [
+      "Horizontal",
+      "Horisontal",
+      "Horizontel",
+      "Horizental"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "120. Choose the correctly spelt word:",
+    "options": [
+      "Illiterate",
+      "Iliterate",
+      "Illiterat",
+      "Illeterate"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "121. Choose the correctly spelt word:",
+    "options": [
+      "Justifiable",
+      "Justefiable",
+      "Justifiabel",
+      "Justifible"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "122. Choose the correctly spelt word:",
+    "options": [
+      "Kleptomania",
+      "Cleptomania",
+      "Kleptomanea",
+      "Kleptomonya"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "123. Choose the correctly spelt word:",
+    "options": [
+      "Legitimacy",
+      "Legitamacy",
+      "Legitemacy",
+      "Lijitimacy"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "124. Choose the correctly spelt word:",
+    "options": [
+      "Masterpiece",
+      "Masterpeice",
+      "Masterpice",
+      "Mesterpiece"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "125. Choose the correctly spelt word:",
+    "options": [
+      "Negligence",
+      "Neglegence",
+      "Negliginse",
+      "Negleginse"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "126. Choose the correctly spelt word:",
+    "options": [
+      "Obstacle",
+      "Obstackle",
+      "Obstekle",
+      "Obstacal"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "127. Choose the correctly spelt word:",
+    "options": [
+      "Particular",
+      "Particuler",
+      "Partecular",
+      "Particuelar"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "128. Choose the correctly spelt word:",
+    "options": [
+      "Qualification",
+      "Qualefication",
+      "Qualificasion",
+      "Qualifecasion"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "129. Choose the correctly spelt word:",
+    "options": [
+      "Reluctant",
+      "Reluctent",
+      "Raluctant",
+      "Relucktant"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "130. Choose the correctly spelt word:",
+    "options": [
+      "Sophisticated",
+      "Sofisticated",
+      "Sophistecated",
+      "Sophasticated"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "131. Choose the correctly spelt word:",
+    "options": [
+      "Transmission",
+      "Transmision",
+      "Tranzmission",
+      "Transmisson"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "132. Choose the correctly spelt word:",
+    "options": [
+      "Unbelievable",
+      "Unbelievible",
+      "Unbeleevable",
+      "Unbeleevible"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "133. Choose the correctly spelt word:",
+    "options": [
+      "Vulnerable",
+      "Vulnerible",
+      "Volnerable",
+      "Volnerible"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "134. Choose the correctly spelt word:",
+    "options": [
+      "Whereabouts",
+      "Whereabouts",
+      "Wherabouts",
+      "Whereabouts"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "135. Choose the correctly spelt word:",
+    "options": [
+      "Yielding",
+      "Yeilding",
+      "Yeldin",
+      "Yeildeng"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "136. Choose the correctly spelt word:",
+    "options": [
+      "Abundant",
+      "Abundent",
+      "Abandant",
+      "Abundunt"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "137. Choose the correctly spelt word:",
+    "options": [
+      "Bankruptcy",
+      "Bankruptsy",
+      "Bankrupesy",
+      "Bankrupcy"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "138. Choose the correctly spelt word:",
+    "options": [
+      "Collateral",
+      "Colateral",
+      "Colleteral",
+      "Colatteral"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "139. Choose the correctly spelt word:",
+    "options": [
+      "Deficiency",
+      "Defisiency",
+      "Defeciency",
+      "Defisency"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "140. Choose the correctly spelt word:",
+    "options": [
+      "Eccentric",
+      "Ecentric",
+      "Eccantric",
+      "Excentric"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "141. Choose the correctly spelt word:",
+    "options": [
+      "Flourish",
+      "Florish",
+      "Fleurish",
+      "Flowrish"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "142. Choose the correctly spelt word:",
+    "options": [
+      "Guarantee",
+      "Garantee",
+      "Guarrantee",
+      "Guarente"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "143. Choose the correctly spelt word:",
+    "options": [
+      "Hypocrisy",
+      "Hipocrisy",
+      "Hypocrasy",
+      "Hypocrisey"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "144. Choose the correctly spelt word:",
+    "options": [
+      "Inevitable",
+      "Inevitible",
+      "Inevatible",
+      "Inevateble"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "145. Choose the correctly spelt word:",
+    "options": [
+      "Jurisdiction",
+      "Jurisdicsion",
+      "Juresdiction",
+      "Jurisdictun"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "146. Choose the correctly spelt word:",
+    "options": [
+      "Knowledgeable",
+      "Knowledgable",
+      "Knowlegeable",
+      "Knowledgeabel"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "147. Choose the correctly spelt word:",
+    "options": [
+      "Longevity",
+      "Longeveti",
+      "Longevety",
+      "Longivity"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "148. Choose the correctly spelt word:",
+    "options": [
+      "Mandatory",
+      "Mandetory",
+      "Mandatorye",
+      "Mandatery"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "149. Choose the correctly spelt word:",
+    "options": [
+      "Nostalgia",
+      "Nostalgea",
+      "Nastalgia",
+      "Nostalgya"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "150. Choose the correctly spelt word:",
+    "options": [
+      "Obsolete",
+      "Obselete",
+      "Obsolete",
+      "Obsalete"
+    ],
+    "answer": 0
+  }
+]

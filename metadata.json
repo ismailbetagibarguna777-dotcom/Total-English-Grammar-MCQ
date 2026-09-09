@@ -1,0 +1,6 @@
+{
+  "name": "General Knowledge & Antonyms Quiz",
+  "description": "Interactive English MCQ quiz application featuring Antonyms, Articles, Completing Sentences, Degree & Transformations, Famous Characters, Famous Dialogues, Gender, Non-Finites & Clauses, Narration, Number, One Word Substitution, Parts of Speech, Person and Determiners, Phrase and Idioms, Preposition, Right Form of verbs, Sentence Correction, Sentence Correction 1, Sentence Change, Synonyms, Tag Question, Translation English to Bengali, and Voice Change quizzes with custom ranges, timers, and comprehensive scoreboards.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
