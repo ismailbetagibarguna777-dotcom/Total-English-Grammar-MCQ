@@ -6,13 +6,7 @@
     <title>General Knowledge & Antonyms Quiz - Ismail Hossain</title>
     <meta name="description" content="Interactive English MCQ quiz application featuring Antonyms, Articles, Completing Sentences, Degree & Transformations, Famous Characters, Famous Dialogues, Gender, Non-Finites & Clauses, Narration, Number, One Word Substitution, Parts of Speech, Person and Determiners, Phrase and Idioms, Preposition, and Right Form of verbs, and Sentence Correction, Sentence Change, Synonyms, Tag Question, Translation English to Bengali, Voice Change, and Sentence Correction 1 quizzes with custom ranges, timers, and comprehensive scoreboards.">
     
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        // CRITICAL: Disables Tailwind's base reset so it doesn't destroy your custom Quiz CSS
-        tailwind.config = {
-            corePlugins: { preflight: false }
-        }
-    </script>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
@@ -67,7 +61,7 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            overflow-x: hidden;
+            overflow-x: clip;
         }
 
         /* ===================================================== */
@@ -159,6 +153,7 @@
         .clock-container { background-color: rgba(0, 0, 0, 0.2); padding: 10px 15px; border-radius: 10px; min-width: 220px; text-align: center; order: 3; }
         #digital-clock { font-family: 'Courier New', monospace; font-size: 1.8rem; font-weight: bold; letter-spacing: 2px; }
         #date-display { font-size: 1.1rem; margin-top: 5px; color: var(--accent-color); }
+        .header-sound-toggle { background: rgba(255, 255, 255, 0.2); border: 2px solid rgba(255, 255, 255, 0.4); color: white; padding: 6px 12px; border-radius: 20px; cursor: pointer; font-size: 0.9rem; display: flex; align-items: center; gap: 6px; transition: all 0.3s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.2); } .header-sound-toggle:hover { background: rgba(255, 255, 255, 0.3); } .header-sound-toggle.muted { background: rgba(220, 38, 38, 0.6); border-color: rgba(255, 255, 255, 0.2); }
         .header-image { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 5px solid rgba(255, 255, 255, 0.3); box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); order: 1; }
         
         .marquee-container { background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet); color: var(--white); padding: 12px 0; font-weight: bold; font-size: 1.1rem; overflow: hidden; position: relative; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); }
@@ -1055,7 +1050,870 @@
             }
         }
 
-    </style>
+    
+        /* ===================================================== */
+        /* NEW FEATURES: FONT CONTROLS, HUD, FLAG, NEG MARKING,  */
+        /* PERMANENT SCOREBOARD, GLOBAL SETTINGS & RESPONSIVE    */
+        /* ===================================================== */
+        *, *::before, *::after { box-sizing: border-box; }
+        html, body { max-width: 100%; overflow-x: clip; }
+        :root {
+            --q-font-size: 20px;
+            --opt-font-size: 16px;
+            --quiz-font-family: 'Segoe UI', 'Siyam Rupali', 'Kalpurush', sans-serif;
+        }
+        .question-text {
+            font-size: var(--q-font-size) !important;
+            font-family: var(--quiz-font-family);
+            word-break: break-word;
+        }
+        .option {
+            font-size: var(--opt-font-size) !important;
+            font-family: var(--quiz-font-family);
+            word-break: break-word;
+            line-height: 1.5;
+        }
+        .review-q-text {
+            font-size: var(--q-font-size) !important;
+            font-family: var(--quiz-font-family);
+        }
+        .review-opt-item {
+            font-size: var(--opt-font-size) !important;
+            font-family: var(--quiz-font-family);
+        }
+
+        /* Header Action Controls */
+        .header-right-stack {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            order: 4;
+        }
+        .header-quick-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+        }
+        .header-action-pill {
+            background: rgba(255, 255, 255, 0.18);
+            border: 1.5px solid rgba(255, 255, 255, 0.38);
+            color: #ffffff;
+            padding: 6px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.84rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.25s ease;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.16);
+        }
+        .header-action-pill:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Home Profile & Quick Bar */
+        .home-profile-bar {
+            background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%);
+            border: 1px solid #bfdbfe;
+            border-radius: 16px;
+            padding: 14px 20px;
+            margin: 0 auto 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            box-shadow: 0 4px 14px rgba(26, 95, 180, 0.08);
+        }
+        .home-profile-identity {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .home-profile-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.15rem;
+            flex-shrink: 0;
+        }
+        .home-profile-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .home-profile-name {
+            font-weight: 700;
+            color: #1e293b;
+            font-size: 1rem;
+        }
+        .home-profile-id {
+            font-size: 0.85rem;
+            color: #475569;
+        }
+        .home-profile-id strong {
+            color: var(--primary-color);
+            font-family: monospace;
+            font-size: 0.92rem;
+        }
+        .home-profile-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .home-quick-btn {
+            padding: 8px 14px;
+            border-radius: 10px;
+            border: 1.5px solid #cbd5e1;
+            background: #ffffff;
+            color: #1e293b;
+            font-size: 0.86rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+        }
+        .home-quick-btn:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            background: #eff6ff;
+        }
+        .home-quick-btn.primary {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: #ffffff;
+        }
+        .home-quick-btn.primary:hover {
+            background: var(--primary-dark);
+            color: #ffffff;
+        }
+
+        /* Enhanced User Info & Settings Grid */
+        .user-info-container { max-width: 780px; }
+        .user-info-form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 20px;
+        }
+        .settings-card-box {
+            margin: 20px 0;
+            border: 1px solid #cbd5e1;
+            border-radius: 14px;
+            padding: 18px;
+            background: #f8fafc;
+        }
+        .settings-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .settings-card-header h3 {
+            margin: 0;
+            color: var(--primary-color);
+            font-size: 1.12rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .settings-grid-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        .setting-item-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 12px 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .setting-item-title {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: #1e293b;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
+        .setting-item-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .setting-num-input {
+            width: 72px;
+            padding: 6px 8px;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 0.92rem;
+            font-weight: 600;
+            text-align: center;
+            color: #1e293b;
+        }
+        .neg-mark-pills {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .neg-mark-pill {
+            padding: 6px 12px;
+            border-radius: 8px;
+            border: 1.5px solid #cbd5e1;
+            background: #f8fafc;
+            color: #334155;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .neg-mark-pill:hover {
+            border-color: var(--primary-color);
+        }
+        .neg-mark-pill.active {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: #ffffff;
+            box-shadow: 0 2px 6px rgba(26, 95, 180, 0.25);
+        }
+        .neg-mark-pill.active[data-neg="0.25"],
+        .neg-mark-pill.active[data-neg="0.50"] {
+            background: #dc2626;
+            border-color: #dc2626;
+        }
+
+        /* Sticky Live Quiz HUD */
+        .live-quiz-hud {
+            position: sticky;
+            top: 8px;
+            z-index: 60;
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(12px);
+            border: 1.5px solid #bfdbfe;
+            border-radius: 16px;
+            padding: 14px 18px;
+            margin: 16px 0 22px 0;
+            box-shadow: 0 10px 28px rgba(15, 23, 42, 0.12);
+        }
+        .hud-top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .hud-top-title {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 0.92rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .hud-collapse-btn {
+            display: none;
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            color: var(--primary-color);
+            border-radius: 8px;
+            padding: 4px 10px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .hud-metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin-bottom: 12px;
+        }
+        .hud-metric-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 10px 14px;
+        }
+        .hud-metric-box .time-label,
+        .hud-metric-box .progress-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: #334155;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .hud-timer-value-group {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        #time-text {
+            font-family: monospace;
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--primary-color);
+        }
+        .live-pause-btn {
+            background: #eff6ff;
+            border: 1px solid #93c5fd;
+            color: var(--primary-color);
+            border-radius: 6px;
+            padding: 3px 8px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .live-pause-btn.paused {
+            background: #fef3c7;
+            border-color: #f59e0b;
+            color: #b45309;
+        }
+        .hud-controls-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #e2e8f0;
+        }
+        .font-controls-group {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+        }
+        .font-control-cluster {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: #f1f5f9;
+            padding: 4px 8px;
+            border-radius: 10px;
+            border: 1px solid #cbd5e1;
+        }
+        .font-cluster-label {
+            font-size: 0.76rem;
+            font-weight: 700;
+            color: #475569;
+            margin-right: 2px;
+            white-space: nowrap;
+        }
+        .font-ctrl-btn {
+            min-width: 28px;
+            height: 28px;
+            padding: 0 7px;
+            border: 1px solid #cbd5e1;
+            background: #ffffff;
+            color: #1e293b;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.18s ease;
+        }
+        .font-ctrl-btn:hover {
+            background: var(--primary-color);
+            color: #ffffff;
+            border-color: var(--primary-color);
+        }
+        .font-size-badge {
+            font-size: 0.74rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            min-width: 34px;
+            text-align: center;
+        }
+        .hud-action-group {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+        }
+        .hud-pill-btn {
+            padding: 6px 12px;
+            border-radius: 10px;
+            border: 1.5px solid #cbd5e1;
+            background: #ffffff;
+            color: #334155;
+            font-size: 0.82rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+        }
+        .hud-pill-btn:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+        .hud-pill-btn.active-flag-filter {
+            background: #f59e0b;
+            border-color: #d97706;
+            color: #ffffff;
+        }
+        .hud-pill-btn.active-live-time {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: #ffffff;
+        }
+
+        /* Live Time Settings Drawer inside HUD */
+        .live-time-drawer {
+            display: none;
+            margin-top: 12px;
+            padding: 12px 14px;
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 12px;
+        }
+        .live-time-drawer.open {
+            display: block;
+        }
+        .live-time-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        .live-time-item {
+            background: #ffffff;
+            border: 1px solid #dbeafe;
+            border-radius: 10px;
+            padding: 8px 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .live-time-item-label {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: #1e3a8a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .live-time-btn-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .live-adj-btn {
+            padding: 4px 9px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            background: #f8fafc;
+            color: #1e293b;
+            font-size: 0.78rem;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .live-adj-btn:hover {
+            background: var(--primary-color);
+            color: #ffffff;
+            border-color: var(--primary-color);
+        }
+
+        /* Question Navigator Strip */
+        .question-nav-strip {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            overflow-x: auto;
+            padding: 8px 2px 2px 2px;
+            margin-top: 8px;
+            border-top: 1px dashed #cbd5e1;
+            scrollbar-width: thin;
+        }
+        .q-nav-chip {
+            min-width: 32px;
+            height: 30px;
+            padding: 0 7px;
+            border-radius: 8px;
+            border: 1.5px solid #cbd5e1;
+            background: #ffffff;
+            color: #475569;
+            font-size: 0.78rem;
+            font-weight: 700;
+            cursor: pointer;
+            flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3px;
+            transition: all 0.15s ease;
+        }
+        .q-nav-chip.answered {
+            background: #dcfce7;
+            border-color: #22c55e;
+            color: #166534;
+        }
+        .q-nav-chip.timed-out {
+            background: #fee2e2;
+            border-color: #ef4444;
+            color: #991b1b;
+        }
+        .q-nav-chip.flagged {
+            border-color: #f59e0b;
+            background: #fef3c7;
+            color: #92400e;
+        }
+        .q-nav-chip.active-q {
+            box-shadow: 0 0 0 2px var(--primary-color);
+        }
+
+        /* Question Card Header & Flag Button (prevents timer/badge overlap!) */
+        .question-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eef2f7;
+            position: relative;
+            z-index: 2;
+        }
+        .q-header-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .q-number-badge {
+            background: #eff6ff;
+            color: var(--primary-color);
+            border: 1px solid #bfdbfe;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 700;
+        }
+        .active-q-pill {
+            background: var(--primary-color);
+            color: #ffffff;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .q-header-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .flag-question-btn {
+            padding: 6px 12px;
+            border-radius: 20px;
+            border: 1.5px solid #cbd5e1;
+            background: #ffffff;
+            color: #475569;
+            font-size: 0.82rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+            position: relative;
+            z-index: 3;
+        }
+        .flag-question-btn:hover {
+            border-color: #f59e0b;
+            color: #b45309;
+            background: #fffbeb;
+        }
+        .flag-question-btn.flagged {
+            background: #f59e0b;
+            border-color: #d97706;
+            color: #ffffff;
+            box-shadow: 0 2px 8px rgba(245, 158, 11, 0.35);
+        }
+        .quiz-question.flagged {
+            border-left: 5px solid #f59e0b;
+            background: linear-gradient(135deg, #fffbeb 0%, #ffffff 60%);
+        }
+        .question-timer-container {
+            position: static !important;
+            width: auto !important;
+            height: auto !important;
+            padding: 4px 12px;
+            border-radius: 20px;
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+        }
+        .question-locked-message {
+            position: static !important;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        .flagged-filter-banner {
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            background: #fef3c7;
+            border: 1.5px solid #f59e0b;
+            color: #92400e;
+            padding: 12px 16px;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .flagged-filter-banner.show {
+            display: flex;
+        }
+
+        /* Scoreboard Header & Panel Upgrades */
+        .scoreboard-header {
+            display: flex !important;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .scoreboard-identity-wrap {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex: 1;
+            min-width: 220px;
+        }
+        .scoreboard-logo {
+            position: static !important;
+            flex-shrink: 0;
+        }
+        .scoreboard-user-info {
+            padding-left: 0 !important;
+            padding-top: 0 !important;
+        }
+        .scoreboard-panel {
+            width: min(100vw, 720px);
+            right: calc(-1 * min(100vw, 720px) - 20px);
+        }
+        .scoreboard-panel.active {
+            right: 0;
+        }
+        .panel-profile-banner {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 1px solid #93c5fd;
+            border-radius: 12px;
+            padding: 12px 15px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .panel-table-container {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .panel-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            min-width: 540px;
+        }
+        .panel-table th, .panel-table td {
+            padding: 10px 8px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .panel-table th {
+            background: #f1f5f9;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        /* Global Settings Modal */
+        .global-settings-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(4px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+        .global-settings-overlay.active {
+            display: flex;
+        }
+        .global-settings-dialog {
+            background: #ffffff;
+            border-radius: 18px;
+            width: 100%;
+            max-width: 680px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            padding: 24px;
+        }
+        .global-settings-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 12px;
+            margin-bottom: 16px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        .global-settings-head h3 {
+            margin: 0;
+            color: var(--primary-color);
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* 100% Responsive Rules Across All Devices */
+        .categories-grid {
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+        }
+        .range-selection {
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 170px), 1fr));
+        }
+        .options-container {
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+        }
+
+        @media (max-width: 992px) {
+            .live-time-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .scoreboard-details {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+        }
+        @media (max-width: 768px) {
+            .main-content { padding: 12px; }
+            .bismillah-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            .header-image { width: 88px; height: 88px; margin-bottom: 0; }
+            .clock-container { order: 3; min-width: 0; width: 100%; max-width: 300px; margin: 4px auto; }
+            .header-right-stack { order: 1; width: 100%; }
+            .bismillah-text { order: 2; }
+            .user-info-form-grid,
+            .settings-grid-cards,
+            .hud-metrics-grid,
+            .live-time-grid {
+                grid-template-columns: 1fr;
+            }
+            .hud-collapse-btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 4px;
+            }
+            .live-quiz-hud.collapsed .hud-collapsible-body {
+                display: none;
+            }
+            .live-quiz-hud {
+                padding: 10px 12px;
+                top: 4px;
+            }
+            .quiz-header {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+            }
+            .quiz-title { font-size: 1.35rem; }
+            .quiz-controls {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+            .control-btn { justify-content: center; font-size: 0.86rem; padding: 9px 10px; }
+            .scoreboard-header { flex-direction: column; align-items: flex-start; }
+            .scoreboard-identity-wrap { flex-direction: column; text-align: center; width: 100%; }
+            .scoreboard-date-info { text-align: center !important; width: 100%; }
+            .scoreboard-user-info h3 { font-size: 1.5rem; }
+            .footer { padding-bottom: 90px; }
+        }
+        @media (max-width: 576px) {
+            .timer-display-login {
+                position: static;
+                margin-bottom: 12px;
+                display: inline-block;
+            }
+            .login-card { padding: 24px 18px; }
+            .bismillah-arabic { font-size: 1.65rem; }
+            .bismillah-bangla { font-size: 1rem; }
+            .scoreboard-details {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 10px !important;
+            }
+            .scoreboard-card { padding: 16px 10px; }
+            .scoreboard-card-value { font-size: 1.9rem; }
+            .floating-scoreboard-btn, .live-home-btn {
+                width: 46px;
+                height: 46px;
+                font-size: 1.15rem;
+                bottom: 14px;
+            }
+            .floating-scoreboard-btn { right: 14px; }
+            .live-home-btn { left: 14px; }
+            .nav-buttons { bottom: 68px; left: 14px; gap: 6px; }
+            .nav-btn { width: 40px; height: 40px; font-size: 0.95rem; }
+            #back-to-top { left: 68px !important; bottom: 14px !important; }
+            .sound-indicator { right: 70px; bottom: 14px; width: 46px; height: 46px; }
+            .history-actions { flex-wrap: wrap; }
+        }
+        @media (max-width: 380px) {
+            .scoreboard-details {
+                grid-template-columns: 1fr !important;
+            }
+            .quiz-controls {
+                grid-template-columns: 1fr;
+            }
+        }
+
+</style>
 </head>
 <body>
 
@@ -1112,7 +1970,7 @@
     </div>
 </div>
 
-<div id="main-project-wrapper" style="display: none; height: 100%;">
+<div id="main-project-wrapper" style="display: none; min-height: 100vh;">
     <!-- HEADER -->
     <header class="header">
         <div class="bismillah-container">
@@ -1124,7 +1982,7 @@
                 <div class="bismillah-arabic">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</div>
                 <div class="bismillah-bangla">In the name of Allah, the Most Gracious, the Most Merciful</div>
             </div>
-            <img src="https://i.imgur.com/akJtZZb.jpeg" class="header-image" alt="Header">
+            <div class="header-right-stack"><img src="https://i.imgur.com/akJtZZb.jpeg" class="header-image" style="order: unset;" alt="Header"><div class="header-quick-actions"><button id="header-sound-toggle" class="header-sound-toggle" title="Mute/Unmute Quiz Sounds"><i class="fas fa-volume-up"></i> <span id="header-sound-text">Sound On</span></button><button id="header-scoreboard-btn" class="header-action-pill" title="Permanent Quiz Scoreboard"><i class="fas fa-trophy"></i> <span>Scoreboard</span></button><button id="header-settings-btn" class="header-action-pill" title="All Quizzes Settings"><i class="fas fa-sliders-h"></i> <span>Settings</span></button></div></div>
         </div>
     </header>
 
@@ -1136,6 +1994,19 @@
         <!-- HOME PAGE -->
         <div id="home-page" class="page active">
             <h2 class="page-title">Select any topic and take part in quiz.</h2>
+<div class="home-profile-bar" id="home-profile-bar">
+    <div class="home-profile-identity">
+        <div class="home-profile-avatar"><i class="fas fa-user-graduate"></i></div>
+        <div class="home-profile-meta">
+            <div class="home-profile-name" id="home-profile-name">Guest User</div>
+            <div class="home-profile-id">User ID: <strong id="home-profile-id">Not Set</strong> | Quizzes Taken: <strong id="home-profile-count">0</strong></div>
+        </div>
+    </div>
+    <div class="home-profile-actions">
+        <button type="button" id="home-global-settings-btn" class="home-quick-btn"><i class="fas fa-cog"></i> All Quizzes Settings</button>
+        <button type="button" id="home-scoreboard-btn" class="home-quick-btn primary"><i class="fas fa-trophy"></i> Permanent Scoreboard</button>
+    </div>
+</div>
             <div class="topic-search-filter-section" id="topic-search-filter-section">
                 <div class="search-input-row">
                     <div class="topic-search-input-wrap">
@@ -1187,92 +2058,218 @@
 
         <!-- USER INFO PAGE -->
         <div id="user-info-page" class="page">
-            <div class="user-info-container">
-                <h2 class="page-title">Enter Your Information</h2>
-                <div class="quiz-info">
-                    <p class="quiz-info-title">Quiz Details</p>
-                    <p>Topic: <strong id="user-info-category"></strong></p>
-                    <p>Range: <strong id="user-info-range"></strong></p>
-                    <p>Time: <strong id="user-info-time"></strong></p>
+    <div class="user-info-container">
+        <h2 class="page-title">Quiz Settings &amp; Candidate Info</h2>
+        <div class="quiz-info">
+            <p class="quiz-info-title">Selected Quiz Details</p>
+            <p>Topic: <strong id="user-info-category"></strong> | Range: <strong id="user-info-range"></strong></p>
+            <p>Time: <strong id="user-info-time"></strong> | Per Question: <strong id="user-info-q-time">12 Seconds</strong> | Negative Marking: <strong id="user-info-neg-mark">Off (0)</strong></p>
+        </div>
+
+        <div class="settings-card-box settings-container">
+            <div class="settings-card-header">
+                <h3><i class="fas fa-sliders-h"></i> Quiz Time &amp; Marking Settings (This Quiz / All Quizzes)</h3>
+                <button type="button" id="save-default-settings-btn" class="home-quick-btn"><i class="fas fa-save"></i> Save for All Quizzes</button>
+            </div>
+            <div class="settings-grid-cards">
+                <div class="setting-item-card">
+                    <div class="setting-item-title">
+                        <span><i class="fas fa-hourglass-half"></i> Total Quiz Time (mins)</span>
+                        <label style="cursor:pointer;"><input type="checkbox" id="quiz-total-time-toggle" checked> <span id="quiz-total-time-status">On</span></label>
+                    </div>
+                    <div class="setting-item-row">
+                        <input type="number" id="quiz-total-time" class="setting-num-input" value="5" min="1" max="180">
+                        <span style="font-size:0.82rem; color:#64748b;">Duration for entire quiz</span>
+                    </div>
                 </div>
 
-                <div class="settings-container" style="margin: 20px 0; border: 1px solid #ccc; padding: 15px;">
-                    <h3>Settings</h3>
-                    <div style="margin-bottom: 10px;">
-                        <label>Quiz Total Time (mins): <input type="number" id="quiz-total-time" value="5" style="width: 60px;"></label>
-                        <label style="margin-left: 15px;"><input type="checkbox" id="quiz-total-time-toggle" checked> <span id="quiz-total-time-status">On</span></label>
+                <div class="setting-item-card">
+                    <div class="setting-item-title">
+                        <span><i class="fas fa-stopwatch"></i> Per-Question Time (secs)</span>
+                        <label style="cursor:pointer;"><input type="checkbox" id="question-time-limit-toggle" checked> <span id="question-time-limit-status">On</span></label>
                     </div>
-                    <div style="margin-bottom: 10px;">
-                        <label>Question Time Limit (secs): <input type="number" id="question-time-limit" value="12" style="width: 60px;"></label>
-                        <label style="margin-left: 15px;"><input type="checkbox" id="question-time-limit-toggle" checked> <span id="question-time-limit-status">On</span></label>
-                    </div>
-                    <div style="display: none;">
-                        <label>Auto Lock Toggle: <input type="checkbox" id="auto-lock-toggle" checked></label>
-                        <span id="auto-lock-status">On</span>
+                    <div class="setting-item-row">
+                        <input type="number" id="question-time-limit" class="setting-num-input" value="12" min="5" max="300">
+                        <span style="font-size:0.82rem; color:#64748b;">Auto-lock countdown per Q</span>
                     </div>
                 </div>
 
-                <div class="user-info-form">
-                    <div class="form-group">
-                        <label class="form-label" for="user-name-app">Full Name *</label>
-                        <input type="text" id="user-name-app" class="form-input" required>
+                <div class="setting-item-card">
+                    <div class="setting-item-title">
+                        <span><i class="fas fa-minus-circle"></i> Negative Marking</span>
                     </div>
-                    <div class="form-group">
-                        <label class="form-label" for="user-roll">Roll Number *</label>
-                        <input type="text" id="user-roll" class="form-input" required>
+                    <div class="neg-mark-pills" id="userinfo-neg-mark-pills">
+                        <button type="button" class="neg-mark-pill active" data-neg="0">Off (0)</button>
+                        <button type="button" class="neg-mark-pill" data-neg="0.25">-0.25</button>
+                        <button type="button" class="neg-mark-pill" data-neg="0.50">-0.50</button>
                     </div>
-                    <div class="form-group">
-                        <label class="form-label" for="user-class">Class</label>
-                        <input type="text" id="user-class" class="form-input">
-                    </div>
+                    <span style="font-size:0.78rem; color:#64748b;">Deducted per wrong answer</span>
                 </div>
-                
-                <div class="user-info-controls">
-                    <button id="back-to-selection" class="selection-btn back">Back</button>
-                    <button id="proceed-to-quiz" class="selection-btn">Start Quiz</button>
+
+                <div class="setting-item-card">
+                    <div class="setting-item-title">
+                        <span><i class="fas fa-volume-up"></i> Quiz Audio Feedback</span>
+                        <label style="cursor:pointer;"><input type="checkbox" id="quiz-sound-toggle" checked> <span id="quiz-sound-status">On</span></label>
+                    </div>
+                    <span style="font-size:0.82rem; color:#64748b;">Plays chime on correct &amp; buzz on wrong</span>
                 </div>
+            </div>
+            <div style="display: none;">
+                <label>Auto Lock Toggle: <input type="checkbox" id="auto-lock-toggle" checked></label>
+                <span id="auto-lock-status">On</span>
             </div>
         </div>
 
-        <!-- QUIZ PAGE -->
+        <div class="user-info-form-grid">
+            <div class="form-group">
+                <label class="form-label" for="user-name-app">User Name (Full Name) *</label>
+                <input type="text" id="user-name-app" class="form-input" placeholder="e.g. Md. Ismail Hossain" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="user-id-app">User ID *</label>
+                <input type="text" id="user-id-app" class="form-input" placeholder="e.g. UID-1001" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="user-roll">Roll Number *</label>
+                <input type="text" id="user-roll" class="form-input" placeholder="e.g. 101" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="user-class">Class / Batch</label>
+                <input type="text" id="user-class" class="form-input" placeholder="e.g. BCS / Class 10">
+            </div>
+        </div>
+
+        <div class="user-info-controls">
+            <button id="back-to-selection" class="selection-btn back">Back</button>
+            <button id="proceed-to-quiz" class="selection-btn">Start Quiz</button>
+        </div>
+    </div>
+</div>
+<!-- QUIZ PAGE -->
         <div id="quiz-page" class="page">
-            <div class="quiz-header">
-                <h2 id="quiz-category-title" class="quiz-title"></h2>
-                <div class="quiz-controls">
-                    <button id="shuffle-questions" class="control-btn">Shuffle Questions</button>
-                    <button id="shuffle-options" class="control-btn">Shuffle Options</button>
-                    <button id="reset-quiz" class="control-btn reset">Reset</button>
-                    <button id="back-to-home" class="control-btn home">Home</button>
+    <div class="quiz-header">
+        <h2 id="quiz-category-title" class="quiz-title"></h2>
+        <div class="quiz-controls">
+            <button id="shuffle-questions" class="control-btn"><i class="fas fa-random"></i> Shuffle Q</button>
+            <button id="shuffle-options" class="control-btn"><i class="fas fa-exchange-alt"></i> Shuffle Opt</button>
+            <button id="reset-quiz" class="control-btn reset"><i class="fas fa-redo"></i> Reset</button>
+            <button id="back-to-home" class="control-btn home"><i class="fas fa-home"></i> Home</button>
+        </div>
+    </div>
+
+    <div class="quiz-info">
+        <p>Range: <strong id="selected-range-info"></strong> | Total: <strong id="total-questions-info"></strong> | Time: <strong id="quiz-time-info"></strong> | Per Q: <strong id="question-time-info"></strong> | Negative Marking: <strong id="quiz-neg-mark-info">Off (0)</strong></p>
+        <p>Auto Lock: <strong id="auto-lock-info"></strong> | Active Question: <strong id="current-active-question"></strong></p>
+        <p id="quiz-user-info"></p>
+    </div>
+
+    <!-- STICKY LIVE QUIZ HUD: LIVE TIME, LIVE PROGRESS, FONT CONTROLS, FLAG FILTER, LIVE TIME SETTINGS -->
+    <div class="live-quiz-hud" id="live-quiz-hud">
+        <div class="hud-top-bar">
+            <div class="hud-top-title">
+                <i class="fas fa-tachometer-alt"></i> Live Quiz Monitor
+                <span id="live-q-timer-pill" style="background:#dbeafe; color:#1d4ed8; padding:2px 8px; border-radius:12px; font-size:0.78rem;">Per-Q: 12s</span>
+            </div>
+            <button type="button" id="hud-collapse-btn" class="hud-collapse-btn"><i class="fas fa-chevron-up"></i> <span>Compact</span></button>
+        </div>
+
+        <div class="hud-collapsible-body">
+            <div class="hud-metrics-grid">
+                <div class="hud-metric-box time-container" style="margin:0; border-left: 4px solid var(--primary-color);">
+                    <div class="time-label">
+                        <span><i class="fas fa-clock"></i> Live Time Remaining</span>
+                        <span class="hud-timer-value-group">
+                            <span id="time-text">00:00</span>
+                            <button type="button" id="live-pause-btn" class="live-pause-btn" title="Pause / Resume Timer"><i class="fas fa-pause"></i> <span>Pause</span></button>
+                        </span>
+                    </div>
+                    <div class="time-bar"><div id="time-fill" class="time-fill"></div></div>
+                </div>
+
+                <div class="hud-metric-box progress-container" style="margin:0; border-left: 4px solid var(--success-color);">
+                    <div class="progress-label">
+                        <span><i class="fas fa-tasks"></i> Live Quiz Progress</span>
+                        <span><strong id="progress-text">0/0</strong> (<span id="progress-percent">0%</span>)</span>
+                    </div>
+                    <div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
                 </div>
             </div>
 
-            <div class="quiz-info">
-                <p>Range: <strong id="selected-range-info"></strong> | Total Questions: <strong id="total-questions-info"></strong> | Time: <strong id="quiz-time-info"></strong> | Per Question: <strong id="question-time-info"></strong></p>
-                <p>Auto Lock: <strong id="auto-lock-info"></strong> | Active Question: <strong id="current-active-question"></strong></p>
-                <p id="quiz-user-info"></p>
+            <div class="hud-controls-row">
+                <div class="font-controls-group">
+                    <div class="font-control-cluster" title="Question Stem Font Size">
+                        <span class="font-cluster-label">Question:</span>
+                        <button type="button" id="q-font-dec" class="font-ctrl-btn" aria-label="Decrease Question Font">A-</button>
+                        <span id="q-font-size-val" class="font-size-badge">20px</span>
+                        <button type="button" id="q-font-inc" class="font-ctrl-btn" aria-label="Increase Question Font">A+</button>
+                    </div>
+                    <div class="font-control-cluster" title="Key & Distractors (Options) Font Size">
+                        <span class="font-cluster-label">Key &amp; Options:</span>
+                        <button type="button" id="opt-font-dec" class="font-ctrl-btn" aria-label="Decrease Options Font">A-</button>
+                        <span id="opt-font-size-val" class="font-size-badge">16px</span>
+                        <button type="button" id="opt-font-inc" class="font-ctrl-btn" aria-label="Increase Options Font">A+</button>
+                    </div>
+                    <button type="button" id="font-family-toggle" class="font-ctrl-btn" title="Switch Sans / Serif Font" style="padding: 0 9px;">Serif</button>
+                    <button type="button" id="font-reset-btn" class="font-ctrl-btn" title="Reset Font Sizes"><i class="fas fa-undo"></i></button>
+                </div>
+
+                <div class="hud-action-group">
+                    <button type="button" id="hud-flag-filter-btn" class="hud-pill-btn"><i class="fas fa-flag"></i> Flagged (<span id="hud-flagged-count">0</span>)</button>
+                    <button type="button" id="hud-live-time-btn" class="hud-pill-btn"><i class="fas fa-stopwatch"></i> Live Time Setting</button>
+                </div>
             </div>
 
-            <div class="time-container">
-                <div class="time-label">
-                    <span>Time Remaining</span>
-                    <span id="time-text">00:00</span>
-                </div>
-                <div class="time-bar">
-                    <div id="time-fill" class="time-fill"></div>
+            <!-- Live Time & Marking Drawer -->
+            <div class="live-time-drawer" id="live-time-drawer">
+                <div class="live-time-grid">
+                    <div class="live-time-item">
+                        <div class="live-time-item-label">
+                            <span>Total Quiz Time</span>
+                            <label style="cursor:pointer;"><input type="checkbox" id="live-total-time-toggle" checked> <span id="live-total-time-status">On</span></label>
+                        </div>
+                        <div class="live-time-btn-row">
+                            <button type="button" class="live-adj-btn" id="live-time-minus-1m">-1m</button>
+                            <button type="button" class="live-adj-btn" id="live-time-plus-1m">+1m</button>
+                            <button type="button" class="live-adj-btn" id="live-time-plus-5m">+5m</button>
+                        </div>
+                    </div>
+
+                    <div class="live-time-item">
+                        <div class="live-time-item-label">
+                            <span>Per-Question Time</span>
+                            <label style="cursor:pointer;"><input type="checkbox" id="live-q-time-toggle" checked> <span id="live-q-time-status">On</span></label>
+                        </div>
+                        <div class="live-time-btn-row">
+                            <button type="button" class="live-adj-btn" id="live-qtime-minus-5s">-5s</button>
+                            <span id="live-qtime-val" style="font-weight:700; font-size:0.82rem; color:#1e3a8a;">12s</span>
+                            <button type="button" class="live-adj-btn" id="live-qtime-plus-5s">+5s</button>
+                        </div>
+                    </div>
+
+                    <div class="live-time-item">
+                        <div class="live-time-item-label">
+                            <span>Negative Marking</span>
+                        </div>
+                        <div class="neg-mark-pills" id="live-neg-mark-pills">
+                            <button type="button" class="neg-mark-pill active" data-neg="0" style="padding:4px 9px; font-size:0.78rem;">0</button>
+                            <button type="button" class="neg-mark-pill" data-neg="0.25" style="padding:4px 9px; font-size:0.78rem;">-0.25</button>
+                            <button type="button" class="neg-mark-pill" data-neg="0.50" style="padding:4px 9px; font-size:0.78rem;">-0.50</button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="progress-container">
-                <div class="progress-label">
-                    <span>Progress</span>
-                    <span id="progress-text">0/0</span>
-                </div>
-                <div class="progress-bar">
-                    <div id="progress-fill" class="progress-fill"></div>
-                </div>
-            </div>
+            <!-- Question Navigator Strip -->
+            <div class="question-nav-strip" id="question-nav-strip" aria-label="Question navigator"></div>
+        </div>
+    </div>
 
-            <div id="all-questions-container" class="all-questions-container"></div>
+    <div class="flagged-filter-banner" id="flagged-filter-banner">
+        <span><i class="fas fa-flag"></i> Showing Flagged Questions Only (<span id="flagged-banner-count">0</span>)</span>
+        <button type="button" id="clear-flag-filter-btn" class="home-quick-btn"><i class="fas fa-list"></i> Show All Questions</button>
+    </div>
+
+    <div id="all-questions-container" class="all-questions-container"></div>
 
             <button id="check-answer-btn" class="check-answer-btn">Submit Answers</button>
 
@@ -1286,50 +2283,31 @@
                 <div class="scoreboard-section">
                     <h2 class="scoreboard-title">Quiz Scoreboard</h2>
                     <div id="scoreboard-container" class="scoreboard-container">
-                        <div class="scoreboard-header">
-                            <div class="scoreboard-logo"><img src="https://via.placeholder.com/80" alt="Logo"></div>
-                            <div class="scoreboard-user-info">
-                                <h3 id="scoreboard-user-name"></h3>
-                                <p id="scoreboard-user-details"></p>
-                            </div>
-                            <div class="scoreboard-date-info" style="text-align: right;">
-                                <p id="scoreboard-date"></p>
-                                <p id="scoreboard-weekday"></p>
-                                <p id="scoreboard-time"></p>
-                            </div>
-                        </div>
-                        <p id="scoreboard-quiz-info" style="text-align:center; font-size:1.2rem; margin-bottom:15px; color:#ffd700;"></p>
-                        <div class="scoreboard-details">
-                            <div class="scoreboard-card">
-                                <div class="scoreboard-card-title">Total Questions</div>
-                                <div class="scoreboard-card-value" id="scoreboard-total"></div>
-                            </div>
-                            <div class="scoreboard-card">
-                                <div class="scoreboard-card-title">Attempted</div>
-                                <div class="scoreboard-card-value" id="scoreboard-attempted"></div>
-                            </div>
-                            <div class="scoreboard-card">
-                                <div class="scoreboard-card-title">Correct</div>
-                                <div class="scoreboard-card-value" id="scoreboard-correct"></div>
-                            </div>
-                            <div class="scoreboard-card">
-                                <div class="scoreboard-card-title">Wrong</div>
-                                <div class="scoreboard-card-value" id="scoreboard-wrong"></div>
-                            </div>
-                            <div class="scoreboard-card" style="border: 2px solid #ffd700;">
-                                <div class="scoreboard-card-title" style="color: #ffd700;">Score</div>
-                                <div class="scoreboard-card-value" id="scoreboard-percentage"></div>
-                            </div>
-                            <div class="scoreboard-card">
-                                <div class="scoreboard-card-title">Time Taken</div>
-                                <div class="scoreboard-card-value" id="scoreboard-time-taken"></div>
-                            </div>
-                        </div>
-                        <div class="scoreboard-performance">
-                            <div class="performance-title">Performance</div>
-                            <div class="performance-message" id="performance-message"></div>
-                        </div>
-                        <div class="scoreboard-actions">
+    <div class="scoreboard-header">
+        <div class="scoreboard-identity-wrap">
+            <div class="scoreboard-logo"><img src="https://i.ibb.co/Z6ZKks2H/Gemini-Generated-Image-i2j0zpi2j0zpi2j0.png" alt="Logo"></div>
+            <div class="scoreboard-user-info">
+                <h3 id="scoreboard-user-name"></h3>
+                <p id="scoreboard-user-details"></p>
+            </div>
+        </div>
+        <div class="scoreboard-date-info" style="text-align: right;">
+            <p id="scoreboard-date"></p>
+            <p id="scoreboard-weekday"></p>
+            <p id="scoreboard-time"></p>
+        </div>
+    </div>
+    <p id="scoreboard-quiz-info" style="text-align:center; font-size:1.15rem; margin-bottom:15px; color:#ffd700;"></p>
+    <div class="scoreboard-details">
+        <div class="scoreboard-card"><div class="scoreboard-card-title">Total Questions</div><div class="scoreboard-card-value" id="scoreboard-total"></div></div>
+        <div class="scoreboard-card"><div class="scoreboard-card-title">Attempted</div><div class="scoreboard-card-value" id="scoreboard-attempted"></div></div>
+        <div class="scoreboard-card"><div class="scoreboard-card-title">Correct</div><div class="scoreboard-card-value" id="scoreboard-correct"></div></div>
+        <div class="scoreboard-card"><div class="scoreboard-card-title">Wrong (Penalty)</div><div class="scoreboard-card-value" id="scoreboard-wrong"></div></div>
+        <div class="scoreboard-card" style="border: 2px solid #ffd700;"><div class="scoreboard-card-title" style="color: #ffd700;">Net Score</div><div class="scoreboard-card-value" id="scoreboard-percentage"></div></div>
+        <div class="scoreboard-card"><div class="scoreboard-card-title">Time Taken</div><div class="scoreboard-card-value" id="scoreboard-time-taken"></div></div>
+    </div>
+    <div class="scoreboard-performance"><div class="performance-title">Performance</div><div class="performance-message" id="performance-message"></div></div>
+    <div class="scoreboard-actions">
                             <button id="review-all-btn" class="scoreboard-btn" style="background: linear-gradient(135deg, #1d4ed8, #2563eb); border-color: rgba(255, 255, 255, 0.45);"><i class="fas fa-book-open"></i> Review All</button>
                             <button id="view-history-btn" class="scoreboard-btn"><i class="fas fa-history"></i> View History</button>
                             <button id="new-quiz-btn" class="scoreboard-btn"><i class="fas fa-redo"></i> New Quiz</button>
@@ -1348,22 +2326,11 @@
             <h2 class="history-title">Quiz History <button id="close-history-btn" class="history-btn" style="background:red;"><i class="fas fa-times"></i></button></h2>
             <div class="history-actions" style="margin-bottom: 15px;">
                 <button id="print-history-btn" class="history-btn"><i class="fas fa-print"></i> Print History</button>
+                <button id="export-history-btn" class="history-btn" style="background-color: #047857; margin-left: 10px;"><i class="fas fa-file-csv"></i> Export CSV</button>
             </div>
             <div style="overflow-x: auto;">
                 <table class="history-table">
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Name</th>
-                            <th>Roll</th>
-                            <th>Subject</th>
-                            <th>Total</th>
-                            <th>Correct</th>
-                            <th>Score</th>
-                            <th>Time</th>
-                            <th>Performance</th>
-                        </tr>
-                    </thead>
+                    <thead><tr><th>Date</th><th>User Name</th><th>User ID</th><th>Roll</th><th>Subject</th><th>Total</th><th>Correct</th><th>Wrong</th><th>Net Marks</th><th>Score</th><th>Time</th><th>Performance</th></tr></thead>
                     <tbody id="history-table-body"></tbody>
                 </table>
             </div>
@@ -1407,7 +2374,7 @@
                     <button class="review-filter-btn active" data-review-filter="all" id="review-tab-all">All (<span id="count-review-all">0</span>)</button>
                     <button class="review-filter-btn filter-incorrect" data-review-filter="incorrect" id="review-tab-incorrect">Mistakes (<span id="count-review-incorrect">0</span>)</button>
                     <button class="review-filter-btn filter-correct" data-review-filter="correct" id="review-tab-correct">Correct (<span id="count-review-correct">0</span>)</button>
-                    <button class="review-filter-btn filter-unanswered" data-review-filter="unanswered" id="review-tab-unanswered">Unanswered (<span id="count-review-unanswered">0</span>)</button>
+                    <button class="review-filter-btn filter-unanswered" data-review-filter="unanswered" id="review-tab-unanswered">Unanswered (<span id="count-review-unanswered">0</span>)</button><button class="review-filter-btn" data-review-filter="flagged" id="review-tab-flagged" style="border-color:#f59e0b; color:#b45309;"><i class="fas fa-flag"></i> Flagged (<span id="count-review-flagged">0</span>)</button>
                 </div>
             </div>
 
@@ -1469,7 +2436,7 @@
 <!-- SCOREBOARD PANEL -->
 <div id="scoreboard-panel" class="scoreboard-panel">
     <div class="scoreboard-panel-header">
-        <div class="scoreboard-panel-title">Scoreboard</div>
+        <div class="scoreboard-panel-title"><i class="fas fa-trophy"></i> Permanent Quiz Scoreboard</div>
         <button id="close-panel-btn" class="close-panel-btn"><i class="fas fa-times"></i></button>
     </div>
     <div id="scoreboard-panel-content" class="scoreboard-panel-content"></div>
@@ -1477,6 +2444,88 @@
         <button id="panel-print-btn" class="panel-btn print"><i class="fas fa-print"></i> Print</button>
         <button id="panel-save-btn" class="panel-btn save"><i class="fas fa-save"></i> Save</button>
         <button id="panel-refresh-btn" class="panel-btn"><i class="fas fa-sync-alt"></i></button>
+    </div>
+</div>
+
+
+<!-- GLOBAL SETTINGS MODAL (FOR ALL QUIZZES) -->
+<div id="global-settings-modal" class="global-settings-overlay" role="dialog" aria-modal="true" aria-labelledby="global-settings-title">
+    <div class="global-settings-dialog">
+        <div class="global-settings-head">
+            <h3 id="global-settings-title"><i class="fas fa-sliders-h"></i> All Quizzes Global Settings</h3>
+            <button type="button" id="close-global-settings-btn" class="close-panel-btn" style="background:#f1f5f9; color:#334155;"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="settings-grid-cards">
+            <div class="setting-item-card">
+                <div class="setting-item-title">
+                    <span><i class="fas fa-hourglass-half"></i> Default Total Time (mins)</span>
+                    <label style="cursor:pointer;"><input type="checkbox" id="global-total-time-toggle" checked> <span id="global-total-time-status">On</span></label>
+                </div>
+                <div class="setting-item-row">
+                    <input type="number" id="global-total-time-input" class="setting-num-input" value="5" min="1" max="180">
+                    <span style="font-size:0.82rem; color:#64748b;">Applies to all quizzes</span>
+                </div>
+            </div>
+            <div class="setting-item-card">
+                <div class="setting-item-title">
+                    <span><i class="fas fa-stopwatch"></i> Default Per-Question (secs)</span>
+                    <label style="cursor:pointer;"><input type="checkbox" id="global-q-time-toggle" checked> <span id="global-q-time-status">On</span></label>
+                </div>
+                <div class="setting-item-row">
+                    <input type="number" id="global-q-time-input" class="setting-num-input" value="12" min="5" max="300">
+                    <span style="font-size:0.82rem; color:#64748b;">Timer per question</span>
+                </div>
+            </div>
+            <div class="setting-item-card">
+                <div class="setting-item-title">
+                    <span><i class="fas fa-minus-circle"></i> Default Negative Marking</span>
+                </div>
+                <div class="neg-mark-pills" id="global-neg-mark-pills">
+                    <button type="button" class="neg-mark-pill active" data-neg="0">Off (0)</button>
+                    <button type="button" class="neg-mark-pill" data-neg="0.25">-0.25</button>
+                    <button type="button" class="neg-mark-pill" data-neg="0.50">-0.50</button>
+                </div>
+            </div>
+            <div class="setting-item-card">
+                <div class="setting-item-title">
+                    <span><i class="fas fa-volume-up"></i> Quiz Audio Feedback</span>
+                    <label style="cursor:pointer;"><input type="checkbox" id="global-sound-toggle" checked> <span id="global-sound-status">On</span></label>
+                </div>
+                <span style="font-size:0.82rem; color:#64748b;">Chime &amp; buzzer feedback</span>
+            </div>
+        </div>
+        <div class="settings-card-box" style="margin-top:16px; margin-bottom:0;">
+            <div class="settings-card-header" style="margin-bottom:10px;">
+                <h3><i class="fas fa-id-card"></i> Permanent User Profile (Scoreboard Identity)</h3>
+            </div>
+            <div class="user-info-form-grid" style="margin-top:0;">
+                <div class="form-group">
+                    <label class="form-label" for="global-user-name" style="font-size:0.9rem;">User Name</label>
+                    <input type="text" id="global-user-name" class="form-input" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="global-user-id" style="font-size:0.9rem;">User ID</label>
+                    <input type="text" id="global-user-id" class="form-input" placeholder="e.g. UID-1001">
+                </div>
+            </div>
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:18px; flex-wrap:wrap;">
+            <button type="button" id="cancel-global-settings-btn" class="selection-btn back" style="padding:10px 20px; font-size:0.95rem;">Close</button>
+            <button type="button" id="save-global-settings-btn" class="selection-btn" style="padding:10px 22px; font-size:0.95rem;"><i class="fas fa-check"></i> Apply to All Quizzes</button>
+        </div>
+    </div>
+</div>
+
+<!-- IN-PAGE CONFIRMATION MODAL (replaces window.confirm) -->
+<div id="app-confirm-modal" class="global-settings-overlay" role="dialog" aria-modal="true">
+    <div class="global-settings-dialog" style="max-width:420px; text-align:center;">
+        <div style="font-size:2.4rem; color:#f59e0b; margin-bottom:10px;"><i class="fas fa-exclamation-triangle"></i></div>
+        <h3 id="app-confirm-title" style="margin:0 0 8px 0; color:#1e293b;">Confirm Action</h3>
+        <p id="app-confirm-message" style="color:#475569; margin-bottom:20px; font-size:0.95rem;"></p>
+        <div style="display:flex; justify-content:center; gap:12px;">
+            <button type="button" id="app-confirm-cancel" class="selection-btn back" style="padding:9px 20px; font-size:0.95rem;">Cancel</button>
+            <button type="button" id="app-confirm-ok" class="selection-btn" style="padding:9px 20px; font-size:0.95rem; background:#dc2626;">Confirm</button>
+        </div>
     </div>
 </div>
 
@@ -1517,6 +2566,7 @@
         let loginWidth, loginHeight, trees = [], birds = [], butterflies = [], loginAnimationId;
 
         function resizeLogin() {
+            if (loginWrapper && loginWrapper.style.display === "none") return;
             loginWidth = canvas.width = window.innerWidth;
             loginHeight = canvas.height = window.innerHeight;
             initLoginScene();
@@ -1576,7 +2626,7 @@
                 this.speed = Math.random() * 0.8 + 0.3;
                 this.wingPhase = Math.random() * Math.PI * 2;
                 this.direction = Math.random() > 0.5 ? 1 : -1;
-                this.findNewTarget();
+                this.waiting = false; this.findNewTarget();
             }
             findNewTarget() {
                 if (trees.length > 0) {
@@ -1626,7 +2676,7 @@
                 const dist = Math.sqrt(dx * dx + dy * dy);
                 const flutterX = Math.sin(this.wingPhase * 2) * 0.5;
                 const flutterY = Math.cos(this.wingPhase * 3) * 0.5;
-                if (dist < 30) { setTimeout(() => this.findNewTarget(), 1000 + Math.random() * 2000); }
+                if (dist < 30) { if (!this.waiting) { this.waiting = true; setTimeout(() => { this.findNewTarget(); this.waiting = false; }, 1000 + Math.random() * 2000); } }
                 else { this.x += (dx / dist) * this.speed + flutterX; this.y += (dy / dist) * this.speed + flutterY; }
                 this.wingPhase += 0.2;
             }
@@ -29841,6 +30891,7 @@
         const historyScoreboard = document.getElementById('history-scoreboard');
         const historyTableBody = document.getElementById('history-table-body');
         const printHistoryBtn = document.getElementById('print-history-btn');
+        const exportHistoryBtn = document.getElementById('export-history-btn');
         const closeHistoryBtn = document.getElementById('close-history-btn');
         // Permanent Score Board Elements
         const scoreboardContainer = document.getElementById('scoreboard-container');
@@ -29926,6 +30977,90 @@
         let questionTimeouts = [];
         let questionTimeLimit = 12; 
         let autoLockEnabled = true;
+        let negativeMarking = 0;
+        let flaggedQuestions = [];
+        let showFlaggedOnly = false;
+        let isQuizPaused = false;
+        let activeQuestionTimeRemaining = 12;
+        let qFontSize = 20;
+        let optFontSize = 16;
+        let quizFontFamily = 'sans';
+        let userIdInputApp = null;
+        let confirmModalCallback = null;
+        let isSoundMuted = false;
+        let audioCtx = null;
+        
+        function initAudio() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+        }
+        
+        function playSynthTone(freq, type, duration, vol) {
+            if (isSoundMuted) return;
+            initAudio();
+            const oscillator = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            
+            oscillator.type = type;
+            oscillator.frequency.setValueAtTime(freq, audioCtx.currentTime);
+            
+            gainNode.gain.setValueAtTime(vol, audioCtx.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+            
+            oscillator.start();
+            oscillator.stop(audioCtx.currentTime + duration);
+        }
+        
+        function playCorrectFeedback() {
+            if (isSoundMuted) return;
+            initAudio();
+            // Pleasant double beep (wood block / bell style)
+            playSynthTone(523.25, 'sine', 0.15, 0.5); // C5
+            setTimeout(() => playSynthTone(659.25, 'sine', 0.2, 0.5), 100); // E5
+        }
+        
+        function playIncorrectFeedback() {
+            if (isSoundMuted) return;
+            initAudio();
+            // Buzz / error sound
+            playSynthTone(200, 'sawtooth', 0.2, 0.3);
+            setTimeout(() => playSynthTone(150, 'sawtooth', 0.25, 0.3), 150);
+        }
+        
+        function syncAllSoundToggles() {
+            const gToggle = document.getElementById('global-sound-toggle');
+            const gStatus = document.getElementById('global-sound-status');
+            if (gToggle) gToggle.checked = !isSoundMuted;
+            if (gStatus) gStatus.textContent = isSoundMuted ? 'Off' : 'On';
+        }
+        function toggleSoundMute() {
+            isSoundMuted = !isSoundMuted;
+            const hToggle = document.getElementById('header-sound-toggle');
+            const hText = document.getElementById('header-sound-text');
+            const sToggle = document.getElementById('quiz-sound-toggle');
+            const sStatus = document.getElementById('quiz-sound-status');
+            
+            if (isSoundMuted) {
+                if (hToggle) { hToggle.classList.add('muted'); hToggle.querySelector('i').className = 'fas fa-volume-mute'; }
+                if (hText) hText.textContent = 'Muted';
+                if (sToggle) sToggle.checked = false;
+                if (sStatus) sStatus.textContent = 'Off';
+            } else {
+                initAudio();
+                if (hToggle) { hToggle.classList.remove('muted'); hToggle.querySelector('i').className = 'fas fa-volume-up'; }
+                if (hText) hText.textContent = 'Sound On';
+                if (sToggle) sToggle.checked = true;
+                if (sStatus) sStatus.textContent = 'On';
+            }
+            syncAllSoundToggles();
+        }
         let quizTotalTimeEnabled = true;
         let currentActiveQuestionIndex = 0;
         let activeQuestionTimer = null;
@@ -29961,10 +31096,15 @@ const performanceMessages = {
     ]
 };
         function init() {
+            userIdInputApp = document.getElementById('user-id-app');
+            loadSavedSettingsAndProfile();
             updateClock();
             setInterval(updateClock, 1000);
             loadCategories();
             loadQuizHistory();
+            updateScoreboardPanel();
+            updateHomeProfileBar();
+            initNewFeatureListeners();
             
             quizTotalTimeInput.addEventListener('change', updateTimeSettings);
             questionTimeLimitInput.addEventListener('change', updateTimeSettings);
@@ -30026,8 +31166,10 @@ const performanceMessages = {
                 });
             });
             document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && reviewAllModal && reviewAllModal.classList.contains('active')) {
-                    closeReviewModal();
+                if (e.key === 'Escape') {
+                    if (reviewAllModal && reviewAllModal.classList.contains('active')) closeReviewModal();
+                    closeGlobalSettingsModal();
+                    closeAppConfirm();
                 }
             });
             startQuizBtn.addEventListener('click', showUserInfoPage);
@@ -30039,6 +31181,7 @@ const performanceMessages = {
             printResultBtn.addEventListener('click', printCurrentResult);
             saveResultBtn.addEventListener('click', saveCurrentResult);
             printHistoryBtn.addEventListener('click', printHistory);
+            if (exportHistoryBtn) exportHistoryBtn.addEventListener('click', exportHistoryCSV);
             closeHistoryBtn.addEventListener('click', closeHistory);
             
             floatingScoreboardBtn.addEventListener('click', toggleScoreboardPanel);
@@ -30056,7 +31199,9 @@ const performanceMessages = {
             customEndInput.addEventListener('change', validateCustomRange);
             
             document.addEventListener('click', (event) => {
-                if (!scoreboardPanel.contains(event.target) && !floatingScoreboardBtn.contains(event.target) && scoreboardPanel.classList.contains('active')) {
+                const hSBtn = document.getElementById('header-scoreboard-btn');
+                const hmSBtn = document.getElementById('home-scoreboard-btn');
+                if (!scoreboardPanel.contains(event.target) && !floatingScoreboardBtn.contains(event.target) && (!hSBtn || !hSBtn.contains(event.target)) && (!hmSBtn || !hmSBtn.contains(event.target)) && scoreboardPanel.classList.contains('active')) {
                     closeScoreboardPanel();
                 }
             });
@@ -30083,27 +31228,447 @@ const performanceMessages = {
             dateDisplay.textContent = `${day}, ${date} ${month} ${year}`;
         }
 
+        function openAppConfirm(title, message, onConfirm) {
+            const modal = document.getElementById('app-confirm-modal');
+            const titleEl = document.getElementById('app-confirm-title');
+            const msgEl = document.getElementById('app-confirm-message');
+            if (!modal) { if (onConfirm) onConfirm(); return; }
+            if (titleEl) titleEl.textContent = title;
+            if (msgEl) msgEl.textContent = message;
+            confirmModalCallback = onConfirm;
+            modal.classList.add('active');
+        }
+
+        function closeAppConfirm() {
+            const modal = document.getElementById('app-confirm-modal');
+            if (modal) modal.classList.remove('active');
+            confirmModalCallback = null;
+        }
+
+        function loadSavedSettingsAndProfile() {
+            // 1. Load Font Settings
+            try {
+                const savedFonts = JSON.parse(localStorage.getItem('quizFontSettings') || 'null');
+                if (savedFonts) {
+                    qFontSize = Math.min(32, Math.max(14, Number(savedFonts.qFontSize) || 20));
+                    optFontSize = Math.min(28, Math.max(13, Number(savedFonts.optFontSize) || 16));
+                    quizFontFamily = savedFonts.quizFontFamily === 'serif' ? 'serif' : 'sans';
+                }
+            } catch (e) {}
+            applyFontSettings();
+
+            // 2. Load Global Quiz Settings
+            try {
+                const savedSettings = JSON.parse(localStorage.getItem('quizGlobalSettings') || 'null');
+                if (savedSettings) {
+                    if (typeof savedSettings.totalTime === 'number') quizTotalTimeInput.value = savedSettings.totalTime;
+                    if (typeof savedSettings.totalTimeEnabled === 'boolean') quizTotalTimeToggle.checked = savedSettings.totalTimeEnabled;
+                    if (typeof savedSettings.questionTime === 'number') questionTimeLimitInput.value = savedSettings.questionTime;
+                    if (typeof savedSettings.questionTimeEnabled === 'boolean') questionTimeLimitToggle.checked = savedSettings.questionTimeEnabled;
+                    if (typeof savedSettings.negativeMarking === 'number') negativeMarking = savedSettings.negativeMarking;
+                    if (typeof savedSettings.soundMuted === 'boolean' && savedSettings.soundMuted !== isSoundMuted) {
+                        toggleSoundMute();
+                    }
+                }
+            } catch (e) {}
+            updateTimeSettings();
+            syncNegativeMarkingPills();
+
+            // 3. Load Permanent User Profile
+            try {
+                let profile = JSON.parse(localStorage.getItem('permanentUserProfile') || 'null');
+                if (!profile || !profile.userId) {
+                    const randNum = Math.floor(1000 + Math.random() * 9000);
+                    profile = {
+                        name: (profile && profile.name) || '',
+                        userId: 'UID-' + randNum,
+                        roll: (profile && profile.roll) || '',
+                        class: (profile && profile.class) || ''
+                    };
+                    localStorage.setItem('permanentUserProfile', JSON.stringify(profile));
+                }
+                if (profile.name) userNameInputApp.value = profile.name;
+                if (profile.userId && userIdInputApp) userIdInputApp.value = profile.userId;
+                if (profile.roll) userRollInputApp.value = profile.roll;
+                if (profile.class) userClassInputApp.value = profile.class;
+            } catch (e) {}
+        }
+
+        function saveGlobalSettingsToStorage(showNotification = true) {
+            const totalTime = Math.max(1, parseInt(quizTotalTimeInput.value) || 5);
+            const questionTime = Math.max(5, parseInt(questionTimeLimitInput.value) || 12);
+            const payload = {
+                totalTime,
+                totalTimeEnabled: quizTotalTimeToggle.checked,
+                questionTime,
+                questionTimeEnabled: questionTimeLimitToggle.checked,
+                negativeMarking,
+                soundMuted: isSoundMuted
+            };
+            localStorage.setItem('quizGlobalSettings', JSON.stringify(payload));
+            if (showNotification) showToast('Settings saved for all quizzes!', 'success');
+        }
+
+        function saveUserProfileToStorage(name, userId, roll, cls) {
+            const payload = { name: name || '', userId: userId || '', roll: roll || '', class: cls || '' };
+            localStorage.setItem('permanentUserProfile', JSON.stringify(payload));
+            updateHomeProfileBar();
+        }
+
+        function updateHomeProfileBar() {
+            const nameEl = document.getElementById('home-profile-name');
+            const idEl = document.getElementById('home-profile-id');
+            const countEl = document.getElementById('home-profile-count');
+            let profile = null;
+            try { profile = JSON.parse(localStorage.getItem('permanentUserProfile') || 'null'); } catch (e) {}
+            const hist = JSON.parse(localStorage.getItem('quizHistory') || '[]');
+            if (nameEl) nameEl.textContent = (profile && profile.name) ? profile.name : 'Guest Candidate';
+            if (idEl) idEl.textContent = (profile && profile.userId) ? profile.userId : 'Not Set';
+            if (countEl) countEl.textContent = hist.length;
+        }
+
+        function applyFontSettings() {
+            document.documentElement.style.setProperty('--q-font-size', qFontSize + 'px');
+            document.documentElement.style.setProperty('--opt-font-size', optFontSize + 'px');
+            const fam = quizFontFamily === 'serif'
+                ? "'Georgia', 'Times New Roman', 'Siyam Rupali', serif"
+                : "'Segoe UI', 'Siyam Rupali', 'Kalpurush', sans-serif";
+            document.documentElement.style.setProperty('--quiz-font-family', fam);
+
+            const qVal = document.getElementById('q-font-size-val');
+            const optVal = document.getElementById('opt-font-size-val');
+            const famBtn = document.getElementById('font-family-toggle');
+            if (qVal) qVal.textContent = qFontSize + 'px';
+            if (optVal) optVal.textContent = optFontSize + 'px';
+            if (famBtn) famBtn.textContent = quizFontFamily === 'serif' ? 'Sans' : 'Serif';
+
+            localStorage.setItem('quizFontSettings', JSON.stringify({ qFontSize, optFontSize, quizFontFamily }));
+        }
+
+        function syncNegativeMarkingPills() {
+            document.querySelectorAll('#userinfo-neg-mark-pills .neg-mark-pill, #global-neg-mark-pills .neg-mark-pill, #live-neg-mark-pills .neg-mark-pill').forEach(btn => {
+                const val = parseFloat(btn.dataset.neg);
+                if (val === negativeMarking) btn.classList.add('active');
+                else btn.classList.remove('active');
+            });
+            const labelText = negativeMarking === 0 ? 'Off (0)' : '-' + negativeMarking.toFixed(2);
+            const uiNeg = document.getElementById('user-info-neg-mark');
+            const qNeg = document.getElementById('quiz-neg-mark-info');
+            if (uiNeg) uiNeg.textContent = labelText;
+            if (qNeg) qNeg.textContent = labelText;
+        }
+
+        function setNegativeMarking(val) {
+            negativeMarking = parseFloat(val) || 0;
+            syncNegativeMarkingPills();
+        }
+
+        function openGlobalSettingsModal() {
+            const modal = document.getElementById('global-settings-modal');
+            if (!modal) return;
+            const gTotalIn = document.getElementById('global-total-time-input');
+            const gTotalTog = document.getElementById('global-total-time-toggle');
+            const gTotalStat = document.getElementById('global-total-time-status');
+            const gQIn = document.getElementById('global-q-time-input');
+            const gQTog = document.getElementById('global-q-time-toggle');
+            const gQStat = document.getElementById('global-q-time-status');
+            const gName = document.getElementById('global-user-name');
+            const gId = document.getElementById('global-user-id');
+
+            if (gTotalIn) gTotalIn.value = parseInt(quizTotalTimeInput.value) || 5;
+            if (gTotalTog) gTotalTog.checked = quizTotalTimeToggle.checked;
+            if (gTotalStat) gTotalStat.textContent = quizTotalTimeToggle.checked ? 'On' : 'Off';
+            if (gQIn) gQIn.value = parseInt(questionTimeLimitInput.value) || 12;
+            if (gQTog) gQTog.checked = questionTimeLimitToggle.checked;
+            if (gQStat) gQStat.textContent = questionTimeLimitToggle.checked ? 'On' : 'Off';
+            syncAllSoundToggles();
+            syncNegativeMarkingPills();
+
+            try {
+                const profile = JSON.parse(localStorage.getItem('permanentUserProfile') || 'null');
+                if (gName) gName.value = (profile && profile.name) || userNameInputApp.value || '';
+                if (gId) gId.value = (profile && profile.userId) || (userIdInputApp ? userIdInputApp.value : '') || '';
+            } catch (e) {}
+
+            modal.classList.add('active');
+        }
+
+        function closeGlobalSettingsModal() {
+            const modal = document.getElementById('global-settings-modal');
+            if (modal) modal.classList.remove('active');
+        }
+
+        function initNewFeatureListeners() {
+            // Confirm modal
+            const cCancel = document.getElementById('app-confirm-cancel');
+            const cOk = document.getElementById('app-confirm-ok');
+            const cModal = document.getElementById('app-confirm-modal');
+            if (cCancel) cCancel.addEventListener('click', closeAppConfirm);
+            if (cOk) cOk.addEventListener('click', () => { const cb = confirmModalCallback; closeAppConfirm(); if (cb) cb(); });
+            if (cModal) cModal.addEventListener('click', (e) => { if (e.target === cModal) closeAppConfirm(); });
+
+            // Header & Home Quick Buttons
+            const hScoreBtn = document.getElementById('header-scoreboard-btn');
+            const homeScoreBtn = document.getElementById('home-scoreboard-btn');
+            const hSettingsBtn = document.getElementById('header-settings-btn');
+            const homeSettingsBtn = document.getElementById('home-global-settings-btn');
+            if (hScoreBtn) hScoreBtn.addEventListener('click', toggleScoreboardPanel);
+            if (homeScoreBtn) homeScoreBtn.addEventListener('click', toggleScoreboardPanel);
+            if (hSettingsBtn) hSettingsBtn.addEventListener('click', openGlobalSettingsModal);
+            if (homeSettingsBtn) homeSettingsBtn.addEventListener('click', openGlobalSettingsModal);
+
+            // Global Settings Modal Controls
+            const closeG = document.getElementById('close-global-settings-btn');
+            const cancelG = document.getElementById('cancel-global-settings-btn');
+            const saveG = document.getElementById('save-global-settings-btn');
+            const gModal = document.getElementById('global-settings-modal');
+            if (closeG) closeG.addEventListener('click', closeGlobalSettingsModal);
+            if (cancelG) cancelG.addEventListener('click', closeGlobalSettingsModal);
+            if (gModal) gModal.addEventListener('click', (e) => { if (e.target === gModal) closeGlobalSettingsModal(); });
+
+            const gTotalTog = document.getElementById('global-total-time-toggle');
+            const gQTog = document.getElementById('global-q-time-toggle');
+            const gSoundTog = document.getElementById('global-sound-toggle');
+            if (gTotalTog) gTotalTog.addEventListener('change', () => {
+                const st = document.getElementById('global-total-time-status');
+                if (st) st.textContent = gTotalTog.checked ? 'On' : 'Off';
+            });
+            if (gQTog) gQTog.addEventListener('change', () => {
+                const st = document.getElementById('global-q-time-status');
+                if (st) st.textContent = gQTog.checked ? 'On' : 'Off';
+            });
+            if (gSoundTog) gSoundTog.addEventListener('change', () => {
+                if (gSoundTog.checked === isSoundMuted) toggleSoundMute();
+            });
+            if (saveG) saveG.addEventListener('click', () => {
+                const gTotalIn = document.getElementById('global-total-time-input');
+                const gQIn = document.getElementById('global-q-time-input');
+                const gName = document.getElementById('global-user-name');
+                const gId = document.getElementById('global-user-id');
+
+                if (gTotalIn) quizTotalTimeInput.value = Math.max(1, parseInt(gTotalIn.value) || 5);
+                if (gTotalTog) quizTotalTimeToggle.checked = gTotalTog.checked;
+                if (gQIn) questionTimeLimitInput.value = Math.max(5, parseInt(gQIn.value) || 12);
+                if (gQTog) questionTimeLimitToggle.checked = gQTog.checked;
+
+                updateTimeSettings();
+                saveGlobalSettingsToStorage(false);
+
+                let profile = {};
+                try { profile = JSON.parse(localStorage.getItem('permanentUserProfile') || '{}'); } catch (e) {}
+                const updatedName = gName ? gName.value.trim() : (profile.name || '');
+                const updatedId = gId ? gId.value.trim() : (profile.userId || '');
+                if (updatedName) userNameInputApp.value = updatedName;
+                if (updatedId && userIdInputApp) userIdInputApp.value = updatedId;
+                saveUserProfileToStorage(updatedName, updatedId || profile.userId, profile.roll || '', profile.class || '');
+
+                closeGlobalSettingsModal();
+                showToast('Global settings applied to all quizzes!', 'success');
+            });
+
+            const saveDefaultUserBtn = document.getElementById('save-default-settings-btn');
+            if (saveDefaultUserBtn) saveDefaultUserBtn.addEventListener('click', () => saveGlobalSettingsToStorage(true));
+
+            // Negative Marking Pills (User Info, Global, and Live)
+            document.querySelectorAll('.neg-mark-pill').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    setNegativeMarking(btn.dataset.neg);
+                    if (btn.closest('#live-neg-mark-pills')) {
+                        showToast(negativeMarking === 0 ? 'Negative marking disabled' : `Negative marking set to -${negativeMarking.toFixed(2)}`, 'success');
+                    }
+                });
+            });
+
+            // Font Control Buttons
+            const qDec = document.getElementById('q-font-dec');
+            const qInc = document.getElementById('q-font-inc');
+            const optDec = document.getElementById('opt-font-dec');
+            const optInc = document.getElementById('opt-font-inc');
+            const famBtn = document.getElementById('font-family-toggle');
+            const resetFontBtn = document.getElementById('font-reset-btn');
+            if (qDec) qDec.addEventListener('click', () => { qFontSize = Math.max(14, qFontSize - 2); applyFontSettings(); });
+            if (qInc) qInc.addEventListener('click', () => { qFontSize = Math.min(32, qFontSize + 2); applyFontSettings(); });
+            if (optDec) optDec.addEventListener('click', () => { optFontSize = Math.max(13, optFontSize - 2); applyFontSettings(); });
+            if (optInc) optInc.addEventListener('click', () => { optFontSize = Math.min(28, optFontSize + 2); applyFontSettings(); });
+            if (famBtn) famBtn.addEventListener('click', () => { quizFontFamily = quizFontFamily === 'sans' ? 'serif' : 'sans'; applyFontSettings(); });
+            if (resetFontBtn) resetFontBtn.addEventListener('click', () => { qFontSize = 20; optFontSize = 16; quizFontFamily = 'sans'; applyFontSettings(); showToast('Font size reset', 'success'); });
+
+            // HUD Collapse on Mobile
+            const hudCollapseBtn = document.getElementById('hud-collapse-btn');
+            const hudEl = document.getElementById('live-quiz-hud');
+            if (hudCollapseBtn && hudEl) {
+                hudCollapseBtn.addEventListener('click', () => {
+                    hudEl.classList.toggle('collapsed');
+                    const isCol = hudEl.classList.contains('collapsed');
+                    hudCollapseBtn.innerHTML = isCol ? '<i class="fas fa-chevron-down"></i> <span>Expand</span>' : '<i class="fas fa-chevron-up"></i> <span>Compact</span>';
+                });
+            }
+
+            // Flag Filter Toggle
+            const flagFilterBtn = document.getElementById('hud-flag-filter-btn');
+            const clearFlagFilterBtn = document.getElementById('clear-flag-filter-btn');
+            if (flagFilterBtn) flagFilterBtn.addEventListener('click', toggleFlaggedFilter);
+            if (clearFlagFilterBtn) clearFlagFilterBtn.addEventListener('click', () => { showFlaggedOnly = false; applyFlagFilterDisplay(); });
+
+            // Live Time Settings Drawer & Controls
+            const liveTimeBtn = document.getElementById('hud-live-time-btn');
+            const liveTimeDrawer = document.getElementById('live-time-drawer');
+            if (liveTimeBtn && liveTimeDrawer) {
+                liveTimeBtn.addEventListener('click', () => {
+                    liveTimeDrawer.classList.toggle('open');
+                    liveTimeBtn.classList.toggle('active-live-time');
+                });
+            }
+
+            const livePauseBtn = document.getElementById('live-pause-btn');
+            if (livePauseBtn) livePauseBtn.addEventListener('click', toggleQuizPause);
+
+            const liveTotalTog = document.getElementById('live-total-time-toggle');
+            if (liveTotalTog) liveTotalTog.addEventListener('change', () => {
+                quizTotalTimeEnabled = liveTotalTog.checked;
+                quizTotalTimeToggle.checked = quizTotalTimeEnabled;
+                const st = document.getElementById('live-total-time-status');
+                if (st) st.textContent = quizTotalTimeEnabled ? 'On' : 'Off';
+                quizTotalTimeStatus.textContent = quizTotalTimeEnabled ? 'On' : 'Off';
+                quizTimeInfo.textContent = quizTotalTimeEnabled ? `${Math.ceil(quizTime / 60)} Minutes` : 'Off';
+                clearInterval(timerInterval);
+                if (quizTotalTimeEnabled && !isQuizCompleted && !isQuizPaused) {
+                    if (timeLeft <= 0) timeLeft = (parseInt(quizTotalTimeInput.value) || 5) * 60;
+                    startTimer();
+                } else {
+                    updateTimerDisplay();
+                }
+                showToast(quizTotalTimeEnabled ? 'Live quiz timer enabled' : 'Live quiz timer turned off', 'success');
+            });
+
+            const adjTotalTime = (deltaSec) => {
+                if (!quizTotalTimeEnabled) {
+                    quizTotalTimeEnabled = true;
+                    quizTotalTimeToggle.checked = true;
+                    if (liveTotalTog) liveTotalTog.checked = true;
+                    const st = document.getElementById('live-total-time-status');
+                    if (st) st.textContent = 'On';
+                }
+                timeLeft = Math.max(15, timeLeft + deltaSec);
+                quizTime = Math.max(quizTime, timeLeft);
+                quizTimeInfo.textContent = `${Math.ceil(quizTime / 60)} Minutes`;
+                clearInterval(timerInterval);
+                if (!isQuizCompleted && !isQuizPaused) startTimer();
+                else updateTimerDisplay();
+                showToast(`Time adjusted (${deltaSec > 0 ? '+' : ''}${deltaSec / 60} min)`, 'success');
+            };
+            const m1 = document.getElementById('live-time-minus-1m');
+            const p1 = document.getElementById('live-time-plus-1m');
+            const p5 = document.getElementById('live-time-plus-5m');
+            if (m1) m1.addEventListener('click', () => adjTotalTime(-60));
+            if (p1) p1.addEventListener('click', () => adjTotalTime(60));
+            if (p5) p5.addEventListener('click', () => adjTotalTime(300));
+
+            const liveQTog = document.getElementById('live-q-time-toggle');
+            if (liveQTog) liveQTog.addEventListener('change', () => {
+                autoLockEnabled = liveQTog.checked;
+                questionTimeLimitToggle.checked = autoLockEnabled;
+                autoLockToggle.checked = autoLockEnabled;
+                const st = document.getElementById('live-q-time-status');
+                if (st) st.textContent = autoLockEnabled ? 'On' : 'Off';
+                questionTimeLimitStatus.textContent = autoLockEnabled ? 'On' : 'Off';
+                autoLockStatus.textContent = autoLockEnabled ? 'On' : 'Off';
+                autoLockInfo.textContent = autoLockEnabled ? 'On' : 'Off';
+                questionTimeInfo.textContent = autoLockEnabled ? `${questionTimeLimit} Seconds` : 'Off';
+                updateLiveQTimerBadge();
+
+                if (!autoLockEnabled) {
+                    clearAllQuestionTimers();
+                    showToast('Per-question timer disabled live', 'success');
+                } else if (!isQuizCompleted) {
+                    const nextUnans = userAnswers.findIndex(a => a === null);
+                    if (nextUnans !== -1) {
+                        currentActiveQuestionIndex = nextUnans;
+                        startActiveQuestionTimer(nextUnans);
+                    }
+                    showToast('Per-question timer enabled live', 'success');
+                }
+            });
+
+            const adjQTime = (deltaSec) => {
+                questionTimeLimit = Math.max(5, Math.min(300, questionTimeLimit + deltaSec));
+                questionTimeLimitInput.value = questionTimeLimit;
+                const valEl = document.getElementById('live-qtime-val');
+                if (valEl) valEl.textContent = questionTimeLimit + 's';
+                questionTimeInfo.textContent = autoLockEnabled ? `${questionTimeLimit} Seconds` : 'Off';
+                if (autoLockEnabled && activeQuestionTimer) {
+                    activeQuestionTimeRemaining = Math.max(3, activeQuestionTimeRemaining + deltaSec);
+                    const tv = document.getElementById(`question-timer-value-${currentActiveQuestionIndex}`);
+                    if (tv) { tv.textContent = activeQuestionTimeRemaining; updateTimerClass(tv, activeQuestionTimeRemaining); }
+                }
+                updateLiveQTimerBadge();
+                showToast(`Per-question time set to ${questionTimeLimit}s`, 'success');
+            };
+            const qm5 = document.getElementById('live-qtime-minus-5s');
+            const qp5 = document.getElementById('live-qtime-plus-5s');
+            if (qm5) qm5.addEventListener('click', () => adjQTime(-5));
+            if (qp5) qp5.addEventListener('click', () => adjQTime(5));
+        }
+
+        function updateLiveQTimerBadge() {
+            const pill = document.getElementById('live-q-timer-pill');
+            if (!pill) return;
+            if (!autoLockEnabled) {
+                pill.textContent = 'Per-Q: Off';
+                pill.style.background = '#f1f5f9';
+                pill.style.color = '#64748b';
+            } else {
+                pill.textContent = `Per-Q: ${questionTimeLimit}s`;
+                pill.style.background = '#dbeafe';
+                pill.style.color = '#1d4ed8';
+            }
+        }
+
+        function toggleQuizPause() {
+            if (isQuizCompleted) return;
+            isQuizPaused = !isQuizPaused;
+            const btn = document.getElementById('live-pause-btn');
+            if (isQuizPaused) {
+                clearInterval(timerInterval);
+                clearActiveQuestionTimer();
+                if (btn) {
+                    btn.classList.add('paused');
+                    btn.innerHTML = '<i class="fas fa-play"></i> <span>Resume</span>';
+                }
+                showToast('Quiz timers paused', 'warning');
+            } else {
+                if (btn) {
+                    btn.classList.remove('paused');
+                    btn.innerHTML = '<i class="fas fa-pause"></i> <span>Pause</span>';
+                }
+                if (quizTotalTimeEnabled) startTimer();
+                if (autoLockEnabled && currentActiveQuestionIndex < currentQuestions.length && userAnswers[currentActiveQuestionIndex] === null) {
+                    resumeActiveQuestionTimer();
+                }
+                showToast('Quiz timers resumed', 'success');
+            }
+        }
+
         function updateTimeSettings() {
-            const totalTime = parseInt(quizTotalTimeInput.value) || 5;
-            const questionTime = parseInt(questionTimeLimitInput.value) || 12;
-            
+            const totalTime = Math.max(1, parseInt(quizTotalTimeInput.value) || 5);
+            const questionTime = Math.max(5, parseInt(questionTimeLimitInput.value) || 12);
             quizTotalTimeEnabled = quizTotalTimeToggle.checked;
             quizTotalTimeStatus.textContent = quizTotalTimeEnabled ? 'On' : 'Off';
-            
             autoLockEnabled = questionTimeLimitToggle.checked;
             questionTimeLimitStatus.textContent = autoLockEnabled ? 'On' : 'Off';
 
             userInfoTime.textContent = quizTotalTimeEnabled ? `${totalTime} Minutes` : 'Off';
+            const uiQTime = document.getElementById('user-info-q-time');
+            if (uiQTime) uiQTime.textContent = autoLockEnabled ? `${questionTime} Seconds` : 'Off';
+
             quizTimeInfo.textContent = quizTotalTimeEnabled ? `${totalTime} Minutes` : 'Off';
             questionTimeInfo.textContent = autoLockEnabled ? `${questionTime} Seconds` : 'Off';
-            
             quizTime = totalTime * 60;
             questionTimeLimit = questionTime;
-            
-            // Sync old autoLock status just in case
             autoLockToggle.checked = autoLockEnabled;
             autoLockStatus.textContent = autoLockEnabled ? 'On' : 'Off';
             autoLockInfo.textContent = autoLockEnabled ? 'On' : 'Off';
+            syncNegativeMarkingPills();
         }
 
         function updateAutoLockSetting() {
@@ -30566,6 +32131,8 @@ const performanceMessages = {
             const tabInc = document.getElementById('count-review-incorrect');
             const tabCor = document.getElementById('count-review-correct');
             const tabUnans = document.getElementById('count-review-unanswered');
+            const tabFlag = document.getElementById('count-review-flagged');
+            if (tabFlag) tabFlag.textContent = flaggedQuestions.filter(Boolean).length;
             if (tabAll) tabAll.textContent = currentQuestions.length;
             if (tabInc) tabInc.textContent = incCount;
             if (tabCor) tabCor.textContent = corCount;
@@ -30612,6 +32179,7 @@ const performanceMessages = {
                 if (filter === 'correct' && !isCor) return;
                 if (filter === 'incorrect' && !isWrong) return;
                 if (filter === 'unanswered' && !isUnans) return;
+                if (filter === 'flagged' && !flaggedQuestions[idx]) return;
 
                 renderedCount++;
                 const qNum = selectedRange ? (selectedRange.start + idx) : (idx + 1);
@@ -30662,7 +32230,7 @@ const performanceMessages = {
                 cardEl.className = `review-q-card ${statusClass}`;
                 cardEl.innerHTML = `
                     <div class="review-q-header">
-                        <span class="review-q-num"><i class="fas fa-question-circle"></i> Question ${qNum}</span>
+                        <span class="review-q-num"><i class="fas fa-question-circle"></i> Question ${qNum} ${flaggedQuestions[idx] ? '<span style="background:#fef3c7;color:#b45309;padding:2px 8px;border-radius:12px;font-size:0.74rem;margin-left:6px;"><i class="fas fa-flag"></i> Flagged</span>' : ''}</span>
                         ${statusBadgeHtml}
                     </div>
                     <div class="review-q-text">${escapeReviewHTML(cleanQ)}</div>
@@ -30817,13 +32385,18 @@ function navigateToPage(pageId) {
             const start = selectedRange.start;
             const end = selectedRange.end;
             if (start > end) { showToast('Start number cannot be greater than end number', 'error'); return; }
-            
             userInfoCategory.textContent = getCategoryName(currentCategory);
             userInfoRange.textContent = `Questions ${start}-${end}`;
-            const totalTime = parseInt(quizTotalTimeInput.value) || 5;
-            userInfoTime.textContent = `${totalTime} Minutes`;
-            
-            userNameInputApp.value = ''; userRollInputApp.value = ''; userClassInputApp.value = '';
+            updateTimeSettings();
+            try {
+                const profile = JSON.parse(localStorage.getItem('permanentUserProfile') || 'null');
+                if (profile) {
+                    if (profile.name && !userNameInputApp.value) userNameInputApp.value = profile.name;
+                    if (profile.userId && userIdInputApp && !userIdInputApp.value) userIdInputApp.value = profile.userId;
+                    if (profile.roll && !userRollInputApp.value) userRollInputApp.value = profile.roll;
+                    if (profile.class && !userClassInputApp.value) userClassInputApp.value = profile.class;
+                }
+            } catch (e) {}
             navigateToPage('user-info-page');
         }
 
@@ -30886,29 +32459,35 @@ function navigateToPage(pageId) {
         }
 
         function startQuizFromUserInfo() {
-            if (!userNameInputApp.value.trim() || !userRollInputApp.value.trim()) {
-                showToast('Please enter your name and roll number', 'error'); return;
+            const uName = userNameInputApp.value.trim();
+            const uId = userIdInputApp ? userIdInputApp.value.trim() : '';
+            const uRoll = userRollInputApp.value.trim();
+            const uClass = userClassInputApp.value.trim() || 'Not mentioned';
+
+            if (!uName || !uId || !uRoll) {
+                showToast('Please enter your User Name, User ID, and Roll Number', 'error');
+                return;
             }
+            saveUserProfileToStorage(uName, uId, uRoll, userClassInputApp.value.trim());
+
             const now = new Date();
             const day = String(now.getDate()).padStart(2, '0');
             const month = String(now.getMonth() + 1).padStart(2, '0');
             const year = now.getFullYear();
-            
             userInfoData = {
-                name: userNameInputApp.value.trim(),
-                roll: userRollInputApp.value.trim(),
-                class: userClassInputApp.value.trim() || 'Not mentioned',
+                name: uName,
+                userId: uId,
+                roll: uRoll,
+                class: uClass,
                 date: `${day}/${month}/${year}`,
                 weekday: englishWeekDays[now.getDay()],
                 bengaliWeekday: englishWeekDays[now.getDay()],
                 time: `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`,
                 quizStartTime: Date.now()
             };
-            
             const start = selectedRange.start; const end = selectedRange.end;
             const allQuestions = quizData[currentCategory] || [];
             const selectedQuestions = allQuestions.slice(start - 1, end);
-            
             if (selectedQuestions.length === 0) { showToast('Please select at least one question', 'error'); return; }
             startQuizWithQuestions(currentCategory, selectedQuestions, start, end);
         }
@@ -30917,27 +32496,55 @@ function navigateToPage(pageId) {
             currentCategory = category;
             currentQuestions = [...questions];
             userAnswers = new Array(currentQuestions.length).fill(null);
+            flaggedQuestions = new Array(currentQuestions.length).fill(false);
+            showFlaggedOnly = false;
             isQuizCompleted = false;
+            isQuizPaused = false;
             currentActiveQuestionIndex = 0;
-            
             clearAllQuestionTimers();
+
+            const pauseBtn = document.getElementById('live-pause-btn');
+            if (pauseBtn) {
+                pauseBtn.classList.remove('paused');
+                pauseBtn.innerHTML = '<i class="fas fa-pause"></i> <span>Pause</span>';
+            }
+
             quizCategoryTitle.textContent = `${getCategoryName(category)} Quiz`;
             selectedRangeInfo.textContent = `Questions ${startRange}-${endRange}`;
             totalQuestionsInfo.textContent = currentQuestions.length;
-            quizUserInfo.textContent = `Name: ${userInfoData.name}, Roll: ${userInfoData.roll}`;
-            
-            const totalTime = parseInt(quizTotalTimeInput.value) || 5;
+            quizUserInfo.textContent = `User: ${userInfoData.name} | ID: ${userInfoData.userId || 'N/A'} | Roll: ${userInfoData.roll}`;
+
+            const totalTime = Math.max(1, parseInt(quizTotalTimeInput.value) || 5);
             quizTimeInfo.textContent = quizTotalTimeEnabled ? `${totalTime} Minutes` : 'Off';
-            questionTimeInfo.textContent = autoLockEnabled ? `${questionTimeLimitInput.value || 12} Seconds` : 'Off';
+            questionTimeInfo.textContent = autoLockEnabled ? `${questionTimeLimit} Seconds` : 'Off';
             autoLockInfo.textContent = autoLockEnabled ? 'On' : 'Off';
             currentActiveQuestionSpan.textContent = startRange;
-            
-            quizTime = totalTime * 60; timeLeft = quizTime;
-            clearInterval(timerInterval); startTimer();
-            
+
+            // Sync Live Time Drawer inputs
+            const liveTotalTog = document.getElementById('live-total-time-toggle');
+            const liveTotalStat = document.getElementById('live-total-time-status');
+            const liveQTog = document.getElementById('live-q-time-toggle');
+            const liveQStat = document.getElementById('live-q-time-status');
+            const liveQVal = document.getElementById('live-qtime-val');
+            if (liveTotalTog) liveTotalTog.checked = quizTotalTimeEnabled;
+            if (liveTotalStat) liveTotalStat.textContent = quizTotalTimeEnabled ? 'On' : 'Off';
+            if (liveQTog) liveQTog.checked = autoLockEnabled;
+            if (liveQStat) liveQStat.textContent = autoLockEnabled ? 'On' : 'Off';
+            if (liveQVal) liveQVal.textContent = questionTimeLimit + 's';
+
+            syncNegativeMarkingPills();
+            updateLiveQTimerBadge();
+
+            quizTime = totalTime * 60;
+            timeLeft = quizTime;
+            clearInterval(timerInterval);
+            startTimer();
+
             navigateToPage('quiz-page');
             loadAllQuestions();
             updateProgress();
+            updateFlaggedHUD();
+            applyFlagFilterDisplay();
             resultsContainer.style.display = 'none';
             if (autoLockEnabled) startSequentialQuestionTimers();
         }
@@ -30946,25 +32553,134 @@ function navigateToPage(pageId) {
             allQuestionsContainer.innerHTML = '';
             currentQuestions.forEach((question, questionIndex) => {
                 const questionElement = document.createElement('div');
-                questionElement.className = 'quiz-question';
+                const isFlagged = Boolean(flaggedQuestions[questionIndex]);
+                questionElement.className = 'quiz-question' + (isFlagged ? ' flagged' : '');
                 questionElement.dataset.questionIndex = questionIndex;
                 const questionNumber = selectedRange.start + questionIndex;
-                
-                let activeIndicator = '';
-                if (questionIndex === currentActiveQuestionIndex && autoLockEnabled) {
-                    activeIndicator = `<div class="active-question-indicator" id="active-indicator-${questionIndex}"><i class="fas fa-play"></i></div>`;
-                }
-                
+
+                const isActive = (questionIndex === currentActiveQuestionIndex && autoLockEnabled);
+                const activeBadge = isActive
+                    ? `<span class="active-q-pill" id="active-indicator-${questionIndex}"><i class="fas fa-play"></i> Active</span>`
+                    : '';
+
                 questionElement.innerHTML = `
-                    ${activeIndicator}
-                    <div class="question-timer-container" id="question-timer-${questionIndex}" style="display: ${questionIndex === currentActiveQuestionIndex && autoLockEnabled ? 'flex' : 'none'};">
-                        <div class="question-timer" id="question-timer-value-${questionIndex}">${questionTimeLimit}</div>
+                    <div class="question-card-header">
+                        <div class="q-header-left">
+                            <span class="q-number-badge">Question ${questionNumber}</span>
+                            ${activeBadge}
+                        </div>
+                        <div class="q-header-right">
+                            <button type="button" class="flag-question-btn ${isFlagged ? 'flagged' : ''}" data-flag-index="${questionIndex}">
+                                <i class="fas fa-flag"></i> <span>${isFlagged ? 'Flagged' : 'Flag'}</span>
+                            </button>
+                            <div class="question-timer-container" id="question-timer-${questionIndex}" style="display: ${isActive ? 'flex' : 'none'};">
+                                <div class="question-timer" id="question-timer-value-${questionIndex}">${questionTimeLimit}s</div>
+                            </div>
+                        </div>
                     </div>
                     <div class="question-text">${question.question}</div>
                     <div class="options-container" id="options-container-${questionIndex}"></div>
                 `;
                 allQuestionsContainer.appendChild(questionElement);
+
+                const flagBtn = questionElement.querySelector('.flag-question-btn');
+                if (flagBtn) {
+                    flagBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        toggleQuestionFlag(questionIndex);
+                    });
+                }
                 loadOptionsForQuestion(questionIndex);
+            });
+            renderQuestionNavigator();
+            applyFlagFilterDisplay();
+        }
+
+        function toggleQuestionFlag(questionIndex) {
+            flaggedQuestions[questionIndex] = !flaggedQuestions[questionIndex];
+            const isFlagged = flaggedQuestions[questionIndex];
+            const qEl = document.querySelector(`[data-question-index="${questionIndex}"]`);
+            if (qEl) {
+                qEl.classList.toggle('flagged', isFlagged);
+                const btn = qEl.querySelector('.flag-question-btn');
+                if (btn) {
+                    btn.classList.toggle('flagged', isFlagged);
+                    btn.innerHTML = `<i class="fas fa-flag"></i> <span>${isFlagged ? 'Flagged' : 'Flag'}</span>`;
+                }
+            }
+            updateFlaggedHUD();
+            renderQuestionNavigator();
+            if (showFlaggedOnly) applyFlagFilterDisplay();
+            showToast(isFlagged ? `Question ${selectedRange.start + questionIndex} flagged for review` : `Flag removed from Question ${selectedRange.start + questionIndex}`, isFlagged ? 'warning' : 'success');
+        }
+
+        function updateFlaggedHUD() {
+            const count = flaggedQuestions.filter(Boolean).length;
+            const hudCount = document.getElementById('hud-flagged-count');
+            const bannerCount = document.getElementById('flagged-banner-count');
+            if (hudCount) hudCount.textContent = count;
+            if (bannerCount) bannerCount.textContent = count;
+        }
+
+        function toggleFlaggedFilter() {
+            const count = flaggedQuestions.filter(Boolean).length;
+            if (!showFlaggedOnly && count === 0) {
+                showToast('No questions flagged yet. Click Flag on any question first.', 'warning');
+                return;
+            }
+            showFlaggedOnly = !showFlaggedOnly;
+            applyFlagFilterDisplay();
+        }
+
+        function applyFlagFilterDisplay() {
+            const filterBtn = document.getElementById('hud-flag-filter-btn');
+            const banner = document.getElementById('flagged-filter-banner');
+            const count = flaggedQuestions.filter(Boolean).length;
+            if (showFlaggedOnly && count === 0) showFlaggedOnly = false;
+
+            if (filterBtn) filterBtn.classList.toggle('active-flag-filter', showFlaggedOnly);
+            if (banner) banner.classList.toggle('show', showFlaggedOnly);
+
+            document.querySelectorAll('#all-questions-container .quiz-question').forEach((card, idx) => {
+                if (showFlaggedOnly && !flaggedQuestions[idx]) {
+                    card.style.display = 'none';
+                } else {
+                    card.style.display = '';
+                }
+            });
+        }
+
+        function renderQuestionNavigator() {
+            const nav = document.getElementById('question-nav-strip');
+            if (!nav) return;
+            nav.innerHTML = '';
+            currentQuestions.forEach((q, idx) => {
+                const chip = document.createElement('button');
+                chip.type = 'button';
+                chip.className = 'q-nav-chip';
+                const uA = userAnswers[idx];
+                if (uA === -1) chip.classList.add('timed-out');
+                else if (uA !== null) chip.classList.add('answered');
+                if (flaggedQuestions[idx]) chip.classList.add('flagged');
+                if (autoLockEnabled && idx === currentActiveQuestionIndex && !isQuizCompleted) chip.classList.add('active-q');
+
+                const qNum = selectedRange.start + idx;
+                chip.innerHTML = flaggedQuestions[idx] ? `${qNum} <i class="fas fa-flag" style="font-size:0.65rem;"></i>` : `${qNum}`;
+                chip.title = `Jump to Question ${qNum}`;
+                chip.addEventListener('click', () => {
+                    if (showFlaggedOnly && !flaggedQuestions[idx]) {
+                        showFlaggedOnly = false;
+                        applyFlagFilterDisplay();
+                    }
+                    const target = document.querySelector(`[data-question-index="${idx}"]`);
+                    if (target) {
+                        const hud = document.getElementById('live-quiz-hud');
+                        const offset = hud ? hud.offsetHeight + 16 : 120;
+                        const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                        window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+                    }
+                });
+                nav.appendChild(chip);
             });
         }
 
@@ -30972,12 +32688,14 @@ function navigateToPage(pageId) {
             const question = currentQuestions[questionIndex];
             const optionsContainer = document.getElementById(`options-container-${questionIndex}`);
             optionsContainer.innerHTML = '';
-            
             question.options.forEach((option, optionIndex) => {
                 const optionElement = document.createElement('div');
                 optionElement.className = 'option';
                 if (userAnswers[questionIndex] === optionIndex) {
                     optionElement.classList.add('selected');
+                    optionElement.classList.add('locked');
+                }
+                if (userAnswers[questionIndex] === -1) {
                     optionElement.classList.add('locked');
                 }
                 optionElement.textContent = `${String.fromCharCode(65 + optionIndex)}) ${option}`;
@@ -30990,16 +32708,19 @@ function navigateToPage(pageId) {
 
         function selectOption(questionIndex, optionIndex) {
             if (userAnswers[questionIndex] !== null) return;
-            playMelodiousSound();
+            const isCorrectAnswer = (optionIndex === currentQuestions[questionIndex].answer);
+            if (isCorrectAnswer) playCorrectFeedback();
+            else playIncorrectFeedback();
+
             userAnswers[questionIndex] = optionIndex;
-            
             if (autoLockEnabled && questionIndex === currentActiveQuestionIndex) {
                 clearActiveQuestionTimer();
                 const questionElement = document.querySelector(`[data-question-index="${questionIndex}"]`);
                 const options = questionElement.querySelectorAll('.option');
                 options.forEach((option, index) => {
                     option.classList.add('locked');
-                    if (index === optionIndex) option.classList.add('selected'); else option.classList.remove('selected');
+                    if (index === optionIndex) option.classList.add('selected');
+                    else option.classList.remove('selected');
                 });
                 moveToNextQuestion();
             } else {
@@ -31007,10 +32728,12 @@ function navigateToPage(pageId) {
                 const options = questionElement.querySelectorAll('.option');
                 options.forEach((option, index) => {
                     option.classList.add('locked');
-                    if (index === optionIndex) option.classList.add('selected'); else option.classList.remove('selected');
+                    if (index === optionIndex) option.classList.add('selected');
+                    else option.classList.remove('selected');
                 });
             }
             updateProgress();
+            renderQuestionNavigator();
         }
 
         function startSequentialQuestionTimers() {
@@ -31025,38 +32748,51 @@ function navigateToPage(pageId) {
             currentActiveQuestionIndex = questionIndex;
             currentActiveQuestionSpan.textContent = selectedRange.start + questionIndex;
             updateActiveIndicators();
-            
+            renderQuestionNavigator();
+
             const timerContainer = document.getElementById(`question-timer-${questionIndex}`);
             const timerValue = document.getElementById(`question-timer-value-${questionIndex}`);
-            
             if (timerContainer && timerValue) {
                 timerContainer.style.display = 'flex';
-                let timeRemaining = questionTimeLimit;
-                timerValue.textContent = timeRemaining;
-                updateTimerClass(timerValue, timeRemaining);
-                
-                activeQuestionTimer = setInterval(() => {
-                    timeRemaining--;
-                    timerValue.textContent = timeRemaining;
-                    updateTimerClass(timerValue, timeRemaining);
-                    if (timeRemaining <= 0) {
-                        clearActiveQuestionTimer();
-                        lockQuestion(questionIndex);
-                    }
-                }, 1000);
+                activeQuestionTimeRemaining = questionTimeLimit;
+                timerValue.textContent = activeQuestionTimeRemaining + 's';
+                updateTimerClass(timerValue, activeQuestionTimeRemaining);
+                if (!isQuizPaused) {
+                    resumeActiveQuestionTimer();
+                }
             }
         }
 
+        function resumeActiveQuestionTimer() {
+            clearActiveQuestionTimer();
+            const questionIndex = currentActiveQuestionIndex;
+            const timerValue = document.getElementById(`question-timer-value-${questionIndex}`);
+            if (!timerValue) return;
+            activeQuestionTimer = setInterval(() => {
+                if (isQuizPaused) return;
+                activeQuestionTimeRemaining--;
+                timerValue.textContent = activeQuestionTimeRemaining + 's';
+                updateTimerClass(timerValue, activeQuestionTimeRemaining);
+                if (activeQuestionTimeRemaining <= 0) {
+                    clearActiveQuestionTimer();
+                    lockQuestion(questionIndex);
+                }
+            }, 1000);
+        }
+
         function updateActiveIndicators() {
-            document.querySelectorAll('.active-question-indicator').forEach(i => i.remove());
+            document.querySelectorAll('.active-q-pill').forEach(i => i.remove());
             if (currentActiveQuestionIndex < currentQuestions.length) {
                 const currentElement = document.querySelector(`[data-question-index="${currentActiveQuestionIndex}"]`);
                 if (currentElement) {
-                    const ind = document.createElement('div');
-                    ind.className = 'active-question-indicator';
-                    ind.id = `active-indicator-${currentActiveQuestionIndex}`;
-                    ind.innerHTML = `<i class="fas fa-play"></i>`;
-                    currentElement.prepend(ind);
+                    const leftBox = currentElement.querySelector('.q-header-left');
+                    if (leftBox) {
+                        const ind = document.createElement('span');
+                        ind.className = 'active-q-pill';
+                        ind.id = `active-indicator-${currentActiveQuestionIndex}`;
+                        ind.innerHTML = `<i class="fas fa-play"></i> Active`;
+                        leftBox.appendChild(ind);
+                    }
                 }
             }
         }
@@ -31077,21 +32813,26 @@ function navigateToPage(pageId) {
                 const t = document.getElementById(`question-timer-${i}`);
                 if (t) t.style.display = 'none';
             }
-            document.querySelectorAll('.active-question-indicator').forEach(i => i.remove());
+            document.querySelectorAll('.active-q-pill').forEach(i => i.remove());
         }
 
         function lockQuestion(questionIndex) {
             if (userAnswers[questionIndex] !== null) { moveToNextQuestion(); return; }
-            userAnswers[questionIndex] = -1; 
+            userAnswers[questionIndex] = -1;
             const qEl = document.querySelector(`[data-question-index="${questionIndex}"]`);
-            qEl.querySelectorAll('.option').forEach(o => o.classList.add('locked'));
-            
-            const msg = document.createElement('div');
-            msg.className = 'question-locked-message';
-            msg.textContent = "Time's up! Unanswered";
-            qEl.appendChild(msg);
-            
+            if (qEl) {
+                qEl.querySelectorAll('.option').forEach(o => o.classList.add('locked'));
+                if (!qEl.querySelector('.question-locked-message')) {
+                    const msg = document.createElement('div');
+                    msg.className = 'question-locked-message';
+                    msg.textContent = "Time's up! Unanswered";
+                    const qText = qEl.querySelector('.question-text');
+                    if (qText) qEl.insertBefore(msg, qText);
+                    else qEl.appendChild(msg);
+                }
+            }
             updateProgress();
+            renderQuestionNavigator();
             moveToNextQuestion();
             showToast(`Question ${selectedRange.start + questionIndex} locked automatically`, 'warning');
         }
@@ -31105,21 +32846,26 @@ function navigateToPage(pageId) {
                 if (t) t.style.display = 'none';
                 const i = document.getElementById(`active-indicator-${currentActiveQuestionIndex}`);
                 if (i) i.remove();
-                showToast('Time is up for all questions. Please check your answers.', 'warning');
+                showToast('All sequential questions finished. Click Submit Answers when ready.', 'warning');
             }
         }
 
         function updateProgress() {
             const ans = userAnswers.filter(a => a !== null).length;
             const total = currentQuestions.length;
-            progressFill.style.width = `${(ans / total) * 100}%`;
+            const pct = total > 0 ? Math.round((ans / total) * 100) : 0;
+            progressFill.style.width = `${pct}%`;
             progressText.textContent = `${ans}/${total}`;
+            const pctEl = document.getElementById('progress-percent');
+            if (pctEl) pctEl.textContent = `${pct}%`;
         }
 
         function startTimer() {
             updateTimerDisplay();
+            clearInterval(timerInterval);
             if (!quizTotalTimeEnabled) return;
             timerInterval = setInterval(() => {
+                if (isQuizPaused) return;
                 timeLeft--;
                 updateTimerDisplay();
                 if (timeLeft <= 0) { clearInterval(timerInterval); checkAllAnswers(); }
@@ -31128,14 +32874,15 @@ function navigateToPage(pageId) {
 
         function updateTimerDisplay() {
             if (!quizTotalTimeEnabled) {
-                timeText.textContent = '--:--';
+                timeText.textContent = 'Unlimited';
                 timeFill.style.width = '100%';
-                timeFill.style.backgroundColor = '#ccc';
+                timeFill.style.backgroundColor = '#94a3b8';
                 return;
             }
             const mins = Math.floor(timeLeft / 60); const secs = timeLeft % 60;
             timeText.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
-            timeFill.style.width = `${(timeLeft / quizTime) * 100}%`;
+            const ratio = quizTime > 0 ? Math.min(100, Math.max(0, (timeLeft / quizTime) * 100)) : 0;
+            timeFill.style.width = `${ratio}%`;
             if (timeLeft < 60) timeFill.style.backgroundColor = 'var(--secondary-color)';
             else if (timeLeft < 120) timeFill.style.backgroundColor = 'var(--warning-color)';
             else timeFill.style.backgroundColor = 'var(--success-color)';
@@ -31146,8 +32893,11 @@ function navigateToPage(pageId) {
                 const j = Math.floor(Math.random() * (i + 1));
                 [currentQuestions[i], currentQuestions[j]] = [currentQuestions[j], currentQuestions[i]];
                 [userAnswers[i], userAnswers[j]] = [userAnswers[j], userAnswers[i]];
+                [flaggedQuestions[i], flaggedQuestions[j]] = [flaggedQuestions[j], flaggedQuestions[i]];
             }
-            loadAllQuestions(); updateProgress();
+            loadAllQuestions();
+            updateProgress();
+            updateFlaggedHUD();
             if (autoLockEnabled) { clearAllQuestionTimers(); startSequentialQuestionTimers(); }
             showToast('Questions shuffled successfully', 'success');
         }
@@ -31164,80 +32914,115 @@ function navigateToPage(pageId) {
                 q.options = shufOpts;
                 q.answer = shufOpts.indexOf(origAns);
                 if (userAnswers[idx] !== null && userAnswers[idx] !== -1) {
-                    userAnswers[idx] = shufOpts.indexOf(q.options[userAnswers[idx]]);
+                    const oldSel = userAnswers[idx];
+                    userAnswers[idx] = shufIdx.indexOf(oldSel);
                 }
             });
-           loadAllQuestions(); updateProgress();
-showToast('Options shuffled successfully', 'success');
-}
+            loadAllQuestions();
+            updateProgress();
+            showToast('Options shuffled successfully', 'success');
+        }
 
-function resetQuiz() {
-    if (confirm('Are you sure you want to reset the quiz? All your answers will be lost.')) {
-        const s = selectedRange.start; const e = selectedRange.end;
-        startQuizWithQuestions(currentCategory, (quizData[currentCategory] || []).slice(s - 1, e), s, e);
-        showToast('Quiz reset successfully', 'success');
-    }
-}
+        function resetQuiz() {
+            openAppConfirm('Reset Quiz?', 'All your current answers and flags will be cleared.', () => {
+                const s = selectedRange.start; const e = selectedRange.end;
+                startQuizWithQuestions(currentCategory, (quizData[currentCategory] || []).slice(s - 1, e), s, e);
+                showToast('Quiz reset successfully', 'success');
+            });
+        }
 
         function checkAllAnswers() {
             isQuizCompleted = true;
-            clearInterval(timerInterval); clearAllQuestionTimers();
-            
-            const tTaken = quizTime - timeLeft;
-            const tStr = `${String(Math.floor(tTaken / 60)).padStart(2, '0')}:${String(tTaken % 60).padStart(2, '0')}`;
-            
+            isQuizPaused = false;
+            showFlaggedOnly = false;
+            applyFlagFilterDisplay();
+            clearInterval(timerInterval);
+            clearAllQuestionTimers();
+
+            const tTaken = Math.max(0, quizTime - timeLeft);
+            const tStr = quizTotalTimeEnabled
+                ? `${String(Math.floor(tTaken / 60)).padStart(2, '0')}:${String(tTaken % 60).padStart(2, '0')}`
+                : `${Math.round((Date.now() - (userInfoData.quizStartTime || Date.now())) / 1000)}s`;
+
             currentQuestions.forEach((q, idx) => {
                 const qEl = document.querySelector(`[data-question-index="${idx}"]`);
-                qEl.querySelectorAll('.option').forEach((o, oIdx) => {
-                    if (oIdx === q.answer) o.classList.add('correct');
-                    else if (oIdx === userAnswers[idx]) o.classList.add('incorrect');
-                });
+                if (qEl) {
+                    qEl.querySelectorAll('.option').forEach((o, oIdx) => {
+                        o.classList.add('locked');
+                        if (oIdx === q.answer) o.classList.add('correct');
+                        else if (oIdx === userAnswers[idx]) o.classList.add('incorrect');
+                    });
+                }
                 const t = document.getElementById(`question-timer-${idx}`); if (t) t.style.display = 'none';
                 const i = document.getElementById(`active-indicator-${idx}`); if (i) i.remove();
             });
-            
+
             let cor = 0, att = 0, unans = 0;
             currentQuestions.forEach((q, idx) => {
                 if (userAnswers[idx] !== null && userAnswers[idx] !== -1) {
                     att++; if (userAnswers[idx] === q.answer) cor++;
-                } else if (userAnswers[idx] === -1) { unans++; }
+                } else { unans++; }
             });
-            
+
             const wro = att - cor;
-            const scr = currentQuestions.length > 0 ? Math.round((cor / currentQuestions.length) * 100) : 0;
-            scoreValue.textContent = `${scr}%`;
-            
-           let msg = '', perfCat = '';
-if (scr === 100) { msg = 'Outstanding! You answered all the questions correctly!'; perfCat = 'excellent'; }
-else if (scr >= 80) { msg = 'Excellent! Your general knowledge is very good.'; perfCat = 'excellent'; }
-else if (scr >= 60) { msg = 'Well done! You have good general knowledge.'; perfCat = 'good'; }
-else if (scr >= 40) { msg = 'Satisfactory! Keep studying to improve.'; perfCat = 'average'; }
-else { msg = 'You need to study more. Keep trying!'; perfCat = 'poor'; }
-            
-            scoreMessage.textContent = msg;
-            
+            const penalty = Number((wro * negativeMarking).toFixed(2));
+            const netMarks = Number((cor - penalty).toFixed(2));
+            const scr = currentQuestions.length > 0 ? Math.max(0, Math.round((netMarks / currentQuestions.length) * 100)) : 0;
+
+            scoreValue.textContent = `${scr}% (${netMarks}/${currentQuestions.length})`;
+            let msg = '', perfCat = '';
+            if (scr === 100) { msg = 'Outstanding! You answered all the questions correctly!'; perfCat = 'excellent'; }
+            else if (scr >= 80) { msg = 'Excellent! Your general knowledge is very good.'; perfCat = 'excellent'; }
+            else if (scr >= 60) { msg = 'Well done! You have good general knowledge.'; perfCat = 'good'; }
+            else if (scr >= 40) { msg = 'Satisfactory! Keep studying to improve.'; perfCat = 'average'; }
+            else { msg = 'You need to study more. Keep trying!'; perfCat = 'poor'; }
+
+            scoreMessage.textContent = msg + (negativeMarking > 0 ? ` (Negative Marking: -${negativeMarking.toFixed(2)} | Penalty: -${penalty})` : '');
+
             currentResult = {
-                id: Date.now(), date: userInfoData.date, weekday: userInfoData.weekday, bengaliWeekday: userInfoData.bengaliWeekday, time: userInfoData.time,
-                category: getCategoryName(currentCategory), name: userInfoData.name, roll: userInfoData.roll, class: userInfoData.class,
-                totalQuestions: currentQuestions.length, attempted: att, correct: cor, wrong: wro, unanswered: unans, score: scr, timeTaken: tStr,
-                performance: perfCat, range: `${selectedRange.start}-${selectedRange.end}`, autoLock: autoLockEnabled, questionTimeLimit: questionTimeLimit
+                id: Date.now(),
+                date: userInfoData.date,
+                weekday: userInfoData.weekday,
+                bengaliWeekday: userInfoData.bengaliWeekday,
+                time: userInfoData.time,
+                category: getCategoryName(currentCategory),
+                name: userInfoData.name,
+                userId: userInfoData.userId || 'N/A',
+                roll: userInfoData.roll,
+                class: userInfoData.class,
+                totalQuestions: currentQuestions.length,
+                attempted: att,
+                correct: cor,
+                wrong: wro,
+                unanswered: unans,
+                negativeMarking: negativeMarking,
+                penalty: penalty,
+                netMarks: netMarks,
+                flaggedCount: flaggedQuestions.filter(Boolean).length,
+                score: scr,
+                timeTaken: tStr,
+                performance: perfCat,
+                range: `${selectedRange.start}-${selectedRange.end}`,
+                autoLock: autoLockEnabled,
+                questionTimeLimit: questionTimeLimit
             };
-            
+
             updateScoreBoard(currentResult, perfCat);
-            
+
             let revHTML = '<h3>Answer Review:</h3>';
             currentQuestions.forEach((q, idx) => {
                 const uA = userAnswers[idx];
                 const isCor = uA === q.answer;
+                const isFlagged = Boolean(flaggedQuestions[idx]);
                 let stat = '';
                 if (uA === -1) stat = "Unanswered (Time's up)"; else if (uA === null) stat = 'Unanswered';
                 revHTML += `
                     <div class="answer-item ${isCor ? 'correct' : 'incorrect'}">
-                        <p><strong>Question ${selectedRange.start + idx}:</strong> ${q.question.replace(/^\d+\.\s*/, '')}</p>
+                        <p><strong>Question ${selectedRange.start + idx}:</strong> ${q.question.replace(/^\d+\.\s*/, '')} ${isFlagged ? '<span style="background:#fef3c7;color:#92400e;padding:2px 8px;border-radius:12px;font-size:0.78rem;font-weight:700;margin-left:6px;"><i class="fas fa-flag"></i> Flagged</span>' : ''}</p>
                         <p>Your Answer: ${uA !== null && uA !== -1 ? q.options[uA] : stat}</p>
-                        <p>Correct Answer: ${q.options[q.answer]}</p>
-                        ${!isCor && uA !== null && uA !== -1 ? '<p style="color: var(--danger-color); font-weight: bold;">✗ Wrong Answer</p>' : ''}
-                        ${isCor && uA !== null && uA !== -1 ? '<p style="color: var(--success-color); font-weight: bold;">✓ Correct Answer</p>' : ''}
+                        <p>Correct Answer (Key): ${q.options[q.answer]}</p>
+                        ${!isCor && uA !== null && uA !== -1 ? `<p style="color: var(--danger-color); font-weight: bold;">✗ Wrong Answer${negativeMarking > 0 ? ` (-${negativeMarking.toFixed(2)} mark)` : ''}</p>` : ''}
+                        ${isCor && uA !== null && uA !== -1 ? '<p style="color: var(--success-color); font-weight: bold;">✓ Correct Answer (+1 mark)</p>' : ''}
                         ${uA === -1 ? '<p style="color: var(--warning-color); font-weight: bold;">⏰ Time\'s up</p>' : ''}
                     </div>
                 `;
@@ -31245,25 +33030,27 @@ else { msg = 'You need to study more. Keep trying!'; perfCat = 'poor'; }
             answerReview.innerHTML = revHTML;
             saveToQuizHistory(currentResult);
             updateScoreboardPanel();
-            
+            updateHomeProfileBar();
+
             if (scr >= 60) { showEnhancedCelebration(); playCelebrationSound(); speakScoreMessage(msg); }
-            
+
             resultsContainer.style.display = 'block';
             resultsContainer.scrollIntoView({ behavior: 'smooth' });
         }
 
         function updateScoreBoard(res, perfCat) {
             scoreboardUserName.textContent = `Name: ${res.name}`;
-            scoreboardUserDetails.textContent = `Roll: ${res.roll} | Class: ${res.class}`;
+            scoreboardUserDetails.textContent = `User ID: ${res.userId || 'N/A'} | Roll: ${res.roll} | Class: ${res.class}`;
             scoreboardDate.textContent = `Date: ${res.date}`;
             scoreboardWeekday.textContent = `Day: ${res.weekday}`;
             scoreboardTime.textContent = `Time: ${res.time}`;
-            scoreboardQuizInfo.textContent = `Subject: ${res.category} | Range: ${res.range}`;
+            const negInfo = res.negativeMarking > 0 ? ` | Neg: -${res.negativeMarking.toFixed(2)}` : ' | Neg: Off';
+            scoreboardQuizInfo.textContent = `Subject: ${res.category} | Range: ${res.range}${negInfo}`;
             scoreboardTotal.textContent = res.totalQuestions;
             scoreboardAttempted.textContent = res.attempted;
             scoreboardCorrect.textContent = res.correct;
-            scoreboardWrong.textContent = res.wrong;
-            scoreboardPercentage.textContent = `${res.score}%`;
+            scoreboardWrong.textContent = res.penalty > 0 ? `${res.wrong} (-${res.penalty})` : res.wrong;
+            scoreboardPercentage.textContent = `${res.score}% (${res.netMarks})`;
             scoreboardTimeTaken.textContent = res.timeTaken;
             const msgs = performanceMessages[perfCat];
             performanceMessage.textContent = msgs[Math.floor(Math.random() * msgs.length)];
@@ -31273,9 +33060,11 @@ else { msg = 'You need to study more. Keep trying!'; perfCat = 'poor'; }
             const hist = localStorage.getItem('quizHistory');
             quizHistory = hist ? JSON.parse(hist) : [];
             quizHistory.unshift(res);
-            if (quizHistory.length > 50) quizHistory = quizHistory.slice(0, 50);
+            if (quizHistory.length > 100) quizHistory = quizHistory.slice(0, 100);
             localStorage.setItem('quizHistory', JSON.stringify(quizHistory));
-            loadQuizHistory(); updateScoreboardPanel();
+            loadQuizHistory();
+            updateScoreboardPanel();
+            updateHomeProfileBar();
         }
 
         function loadQuizHistory() {
@@ -31283,56 +33072,146 @@ else { msg = 'You need to study more. Keep trying!'; perfCat = 'poor'; }
             quizHistory = hist ? JSON.parse(hist) : [];
             historyTableBody.innerHTML = '';
             if (quizHistory.length === 0) {
-                historyTableBody.innerHTML = `<tr><td colspan="9" style="text-align: center; padding: 30px; color: var(--gray);"><i class="fas fa-history" style="font-size: 2rem; margin-bottom: 10px; display: block;"></i>You don't have any quiz history. Start a quiz now!</td></tr>`;
+                historyTableBody.innerHTML = `<tr><td colspan="12" style="text-align: center; padding: 30px; color: var(--gray);"><i class="fas fa-history" style="font-size: 2rem; margin-bottom: 10px; display: block;"></i>You don't have any quiz history. Start a quiz now!</td></tr>`;
                 return;
             }
-            quizHistory.slice(0, 10).forEach(r => {
+            quizHistory.slice(0, 20).forEach(r => {
+                const netDisp = (typeof r.netMarks === 'number') ? `${r.netMarks}/${r.totalQuestions}` : `${r.correct}/${r.totalQuestions}`;
                 const tr = document.createElement('tr');
-                tr.innerHTML = `<td>${r.date} (${r.weekday})</td><td>${r.name}</td><td>${r.roll}</td><td>${r.category}</td><td>${r.totalQuestions}</td><td>${r.correct}</td><td class="history-score">${r.score}%</td><td>${r.time}</td><td><span class="history-performance ${r.performance || 'average'}">${getPerformanceText(r.score)}</span></td>`;
+                tr.innerHTML = `<td>${r.date} (${r.weekday})</td><td>${escapeReviewHTML(r.name)}</td><td><strong>${escapeReviewHTML(r.userId || 'N/A')}</strong></td><td>${escapeReviewHTML(r.roll)}</td><td>${escapeReviewHTML(r.category)}</td><td>${r.totalQuestions}</td><td>${r.correct}</td><td>${r.wrong != null ? r.wrong : (r.totalQuestions - r.correct)}</td><td>${netDisp}</td><td class="history-score">${r.score}%</td><td>${r.time}</td><td><span class="history-performance ${r.performance || 'average'}">${getPerformanceText(r.score)}</span></td>`;
                 historyTableBody.appendChild(tr);
             });
         }
 
         function updateScoreboardPanel() {
-            const hist = localStorage.getItem('quizHistory'); const arr = hist ? JSON.parse(hist) : [];
-            let html = '';
+            const hist = localStorage.getItem('quizHistory');
+            const arr = hist ? JSON.parse(hist) : [];
+            let profile = null;
+            try { profile = JSON.parse(localStorage.getItem('permanentUserProfile') || 'null'); } catch (e) {}
+            const activeName = (profile && profile.name) || (userInfoData && userInfoData.name) || 'Guest Candidate';
+            const activeId = (profile && profile.userId) || (userInfoData && userInfoData.userId) || 'Not Set';
+
+            let html = `
+                <div class="panel-profile-banner">
+                    <div>
+                        <div style="font-size:0.78rem; color:#475569; font-weight:600;">PERMANENT CANDIDATE PROFILE</div>
+                        <div style="font-size:1.05rem; font-weight:700; color:#1e3a8a;"><i class="fas fa-user"></i> ${escapeReviewHTML(activeName)}</div>
+                    </div>
+                    <div style="text-align:right;">
+                        <div style="font-size:0.78rem; color:#475569; font-weight:600;">USER ID</div>
+                        <div style="font-family:monospace; font-size:1rem; font-weight:800; color:#1d4ed8;">${escapeReviewHTML(activeId)}</div>
+                    </div>
+                </div>
+            `;
+
             if (arr.length === 0) {
-                html = `<div class="empty-state"><div class="empty-state-icon"><i class="fas fa-chart-line"></i></div><div class="empty-state-message">You don't have any score records yet</div><p>Complete a quiz and view your scoreboard</p></div>`;
+                html += `<div class="empty-state"><div class="empty-state-icon"><i class="fas fa-chart-line"></i></div><div class="empty-state-message">You don't have any score records yet</div><p>Complete a quiz to record your score permanently</p></div>`;
             } else {
-                html = `<h3 style="color: var(--primary-color); margin-bottom: 15px;">Recent Scores</h3><div class="panel-table-container"><table class="panel-table"><thead><tr><th>Date</th><th>Name</th><th>Roll</th><th>Subject</th><th>Score</th><th>Time</th><th>Performance</th></tr></thead><tbody>`;
-                arr.slice(0, 8).forEach(r => {
-                    html += `<tr><td>${r.date}</td><td>${r.name.substring(0, 8)}${r.name.length > 8 ? '...' : ''}</td><td>${r.roll}</td><td>${r.category.substring(0, 6)}${r.category.length > 6 ? '...' : ''}</td><td class="history-score">${r.score}%</td><td>${r.time}</td><td><span class="history-performance ${r.performance || 'average'}">${getPerformanceText(r.score)}</span></td></tr>`;
+                html += `
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; flex-wrap:wrap; gap:8px;">
+                        <h3 style="color: var(--primary-color); margin:0;">Permanent Score Records (${arr.length})</h3>
+                        <button type="button" id="clear-perm-scoreboard-btn" style="background:#fee2e2; color:#b91c1c; border:1px solid #fecaca; padding:5px 10px; border-radius:8px; font-size:0.78rem; font-weight:700; cursor:pointer;"><i class="fas fa-trash-alt"></i> Clear Records</button>
+                    </div>
+                    <div class="panel-table-container"><table class="panel-table"><thead><tr><th>Date</th><th>User Name</th><th>User ID</th><th>Subject</th><th>Marks</th><th>Score</th><th>Performance</th></tr></thead><tbody>`;
+                arr.slice(0, 25).forEach(r => {
+                    const marksStr = (typeof r.netMarks === 'number') ? `${r.netMarks}/${r.totalQuestions}` : `${r.correct}/${r.totalQuestions}`;
+                    html += `<tr><td>${r.date}</td><td><strong>${escapeReviewHTML(r.name)}</strong></td><td><code>${escapeReviewHTML(r.userId || 'N/A')}</code></td><td>${escapeReviewHTML(r.category)}</td><td>${marksStr}</td><td class="history-score">${r.score}%</td><td><span class="history-performance ${r.performance || 'average'}">${getPerformanceText(r.score)}</span></td></tr>`;
                 });
-                html += `</tbody></table></div><div style="margin-top: 25px; padding: 15px; background-color: #f0f7ff; border-radius: var(--border-radius-sm);"><h4 style="color: var(--primary-color); margin-bottom: 10px;">Highest Score</h4>`;
-                const max = Math.max(...arr.map(x => x.score)); const top = arr.find(x => x.score === max);
-                if (top) html += `<div style="display: flex; align-items: center; gap: 15px;"><div style="font-size: 2.5rem; font-weight: bold; color: var(--primary-color);">${max}%</div><div><div><strong>${top.name}</strong></div><div>${top.category} - ${top.date}</div><div>Roll: ${top.roll} | Time: ${top.time}</div></div></div>`;
-                html += `</div><div style="margin-top: 20px; padding: 15px; background-color: #e8f4ff; border-radius: var(--border-radius-sm);"><h4 style="color: var(--primary-color); margin-bottom: 10px;">Statistics</h4><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;"><div><div style="font-size: 0.9rem; color: var(--gray);">Total Quizzes</div><div style="font-size: 1.5rem; font-weight: bold; color: var(--primary-color);">${arr.length}</div></div><div><div style="font-size: 0.9rem; color: var(--gray);">Average Score</div><div style="font-size: 1.5rem; font-weight: bold; color: var(--primary-color);">${Math.round(arr.reduce((s, x) => s + x.score, 0) / arr.length)}%</div></div></div></div>`;
+                html += `</tbody></table></div>`;
+
+                const max = Math.max(...arr.map(x => x.score));
+                const top = arr.find(x => x.score === max);
+                const avg = Math.round(arr.reduce((s, x) => s + x.score, 0) / arr.length);
+                const totalQ = arr.reduce((s, x) => s + (x.totalQuestions || 0), 0);
+
+                html += `<div style="margin-top: 20px; padding: 15px; background-color: #f0f7ff; border-radius: var(--border-radius-sm); border:1px solid #bfdbfe;"><h4 style="color: var(--primary-color); margin-bottom: 10px;"><i class="fas fa-crown" style="color:#f59e0b;"></i> Highest Achievement</h4>`;
+                if (top) html += `<div style="display: flex; align-items: center; gap: 15px; flex-wrap:wrap;"><div style="font-size: 2.2rem; font-weight: bold; color: var(--primary-color);">${max}%</div><div><div><strong>${escapeReviewHTML(top.name)}</strong> (ID: ${escapeReviewHTML(top.userId || 'N/A')})</div><div>${escapeReviewHTML(top.category)} - ${top.date}</div><div>Marks: ${typeof top.netMarks === 'number' ? top.netMarks : top.correct}/${top.totalQuestions} | Time: ${top.time}</div></div></div>`;
+                html += `</div>`;
+
+                html += `<div style="margin-top: 15px; padding: 15px; background-color: #e8f4ff; border-radius: var(--border-radius-sm);"><h4 style="color: var(--primary-color); margin-bottom: 10px;">Overall Statistics</h4><div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;"><div><div style="font-size: 0.82rem; color: var(--gray);">Total Quizzes</div><div style="font-size: 1.35rem; font-weight: bold; color: var(--primary-color);">${arr.length}</div></div><div><div style="font-size: 0.82rem; color: var(--gray);">Average Score</div><div style="font-size: 1.35rem; font-weight: bold; color: var(--primary-color);">${avg}%</div></div><div><div style="font-size: 0.82rem; color: var(--gray);">Questions Solved</div><div style="font-size: 1.35rem; font-weight: bold; color: var(--primary-color);">${totalQ}</div></div></div></div>`;
             }
             scoreboardPanelContent.innerHTML = html;
+
+            const clearBtn = document.getElementById('clear-perm-scoreboard-btn');
+            if (clearBtn) {
+                clearBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    openAppConfirm('Clear Permanent Scoreboard?', 'All saved quiz records will be permanently removed from this device.', () => {
+                        localStorage.removeItem('quizHistory');
+                        quizHistory = [];
+                        loadQuizHistory();
+                        updateScoreboardPanel();
+                        updateHomeProfileBar();
+                        showToast('Scoreboard records cleared', 'success');
+                    });
+                });
+            }
         }
 
         function getPerformanceText(s) { if (s >= 80) return 'Excellent'; if (s >= 60) return 'Good'; if (s >= 40) return 'Average'; return 'Poor'; }
-        
+
         function toggleHistory() {
             if (historyScoreboard.style.display === 'none' || historyScoreboard.style.display === '') {
                 historyScoreboard.style.display = 'block'; viewHistoryBtn.innerHTML = '<i class="fas fa-eye-slash"></i> Hide History';
             } else { historyScoreboard.style.display = 'none'; viewHistoryBtn.innerHTML = '<i class="fas fa-history"></i> View History'; }
         }
+
         function closeHistory() { historyScoreboard.style.display = 'none'; viewHistoryBtn.innerHTML = '<i class="fas fa-history"></i> View History'; }
+
         function printCurrentResult() {
             if (!currentResult) { showToast('No result to print', 'error'); return; }
             const win = window.open('', '_blank');
-            win.document.write(`<html><head><title>Quiz Result - ${currentResult.name}</title><style>body{font-family:Arial,sans-serif;padding:20px}.print-header{text-align:center;margin-bottom:30px}.print-title{font-size:24px;color:#1a5fb4;margin-bottom:10px}.print-info{margin-bottom:30px}.print-section{margin-bottom:25px}.print-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin:20px 0}.print-card{border:1px solid #ddd;padding:15px;border-radius:8px;text-align:center}.print-card-title{font-size:14px;color:#666;margin-bottom:5px}.print-card-value{font-size:24px;font-weight:bold;color:#1a5fb4}.performance-message{font-size:18px;font-weight:bold;text-align:center;margin:25px 0;padding:15px;background-color:#f0f7ff;border-radius:8px}.footer{text-align:center;margin-top:40px;color:#666;font-size:12px}</style></head><body><div class="print-header"><h1 class="print-title">General Knowledge Quiz - Result</h1><p>Date: ${currentResult.date} (${currentResult.weekday})</p><p>Time: ${currentResult.time}</p></div><div class="print-info"><p><strong>Examinee:</strong> ${currentResult.name}</p><p><strong>Roll Number:</strong> ${currentResult.roll}</p><p><strong>Class:</strong> ${currentResult.class}</p><p><strong>Subject:</strong> ${currentResult.category}</p><p><strong>Question Range:</strong> ${currentResult.range}</p></div><div class="print-section"><h2>Score Card</h2><div class="print-cards"><div class="print-card"><div class="print-card-title">Total Questions</div><div class="print-card-value">${currentResult.totalQuestions}</div></div><div class="print-card"><div class="print-card-title">Answered</div><div class="print-card-value">${currentResult.attempted}</div></div><div class="print-card"><div class="print-card-title">Correct Answers</div><div class="print-card-value">${currentResult.correct}</div></div><div class="print-card"><div class="print-card-title">Wrong Answers</div><div class="print-card-value">${currentResult.wrong}</div></div><div class="print-card"><div class="print-card-title">Score</div><div class="print-card-value">${currentResult.score}%</div></div><div class="print-card"><div class="print-card-title">Time Taken</div><div class="print-card-value">${currentResult.timeTaken}</div></div></div></div><div class="performance-message">${performanceMessage.textContent}</div><div class="footer"><p>This report was generated from Ismail Hossain's General Knowledge Quiz App</p><p>Website: ismailhossain627@yahoo.com | Mobile: 01728-295215</p></div></body></html>`);
+            if (!win) { window.print(); return; }
+            win.document.write(`<html><head><title>Quiz Result - ${currentResult.name}</title><style>body{font-family:Arial,sans-serif;padding:20px}.print-header{text-align:center;margin-bottom:30px}.print-title{font-size:24px;color:#1a5fb4;margin-bottom:10px}.print-info{margin-bottom:30px}.print-section{margin-bottom:25px}.print-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin:20px 0}.print-card{border:1px solid #ddd;padding:15px;border-radius:8px;text-align:center}.print-card-title{font-size:14px;color:#666;margin-bottom:5px}.print-card-value{font-size:24px;font-weight:bold;color:#1a5fb4}.performance-message{font-size:18px;font-weight:bold;text-align:center;margin:25px 0;padding:15px;background-color:#f0f7ff;border-radius:8px}.footer{text-align:center;margin-top:40px;color:#666;font-size:12px}</style></head><body><div class="print-header"><h1 class="print-title">General Knowledge Quiz - Result</h1><p>Date: ${currentResult.date} (${currentResult.weekday}) | Time: ${currentResult.time}</p></div><div class="print-info"><p><strong>User Name:</strong> ${currentResult.name} | <strong>User ID:</strong> ${currentResult.userId || 'N/A'}</p><p><strong>Roll Number:</strong> ${currentResult.roll} | <strong>Class:</strong> ${currentResult.class}</p><p><strong>Subject:</strong> ${currentResult.category} | <strong>Question Range:</strong> ${currentResult.range}</p><p><strong>Negative Marking:</strong> ${currentResult.negativeMarking > 0 ? '-' + currentResult.negativeMarking.toFixed(2) : 'Off'}</p></div><div class="print-section"><h2>Score Card</h2><div class="print-cards"><div class="print-card"><div class="print-card-title">Total Questions</div><div class="print-card-value">${currentResult.totalQuestions}</div></div><div class="print-card"><div class="print-card-title">Attempted</div><div class="print-card-value">${currentResult.attempted}</div></div><div class="print-card"><div class="print-card-title">Correct Answers</div><div class="print-card-value">${currentResult.correct}</div></div><div class="print-card"><div class="print-card-title">Wrong (Penalty)</div><div class="print-card-value">${currentResult.wrong} (-${currentResult.penalty || 0})</div></div><div class="print-card"><div class="print-card-title">Net Marks / Score</div><div class="print-card-value">${currentResult.netMarks} (${currentResult.score}%)</div></div><div class="print-card"><div class="print-card-title">Time Taken</div><div class="print-card-value">${currentResult.timeTaken}</div></div></div></div><div class="performance-message">${performanceMessage.textContent}</div><div class="footer"><p>This report was generated from Ismail Hossain's General Knowledge Quiz App</p><p>Website: ismailhossain627@yahoo.com | Mobile: 01728-295215</p></div></body></html>`);
             win.document.close(); win.focus(); win.print();
+        }
+
+        function exportHistoryCSV() {
+            const hist = JSON.parse(localStorage.getItem('quizHistory')) || [];
+            if (hist.length === 0) { showToast('No history to export', 'error'); return; }
+            let csvContent = "Date,User Name,User ID,Roll,Subject,Questions,Correct,Wrong,Negative Marking,Net Marks,Score,Time,Performance\n";
+            hist.forEach(r => {
+                const wrong = r.wrong != null ? r.wrong : (r.totalQuestions - r.correct);
+                const neg = r.negativeMarking != null ? r.negativeMarking : 0;
+                const net = r.netMarks != null ? r.netMarks : r.correct;
+                const row = [
+                    `"${r.date} (${r.weekday})"`,
+                    `"${(r.name || '').replace(/"/g, '""')}"`,
+                    `"${(r.userId || 'N/A').replace(/"/g, '""')}"`,
+                    `"${(r.roll || '').replace(/"/g, '""')}"`,
+                    `"${(r.category || '').replace(/"/g, '""')}"`,
+                    r.totalQuestions,
+                    r.correct,
+                    wrong,
+                    neg,
+                    net,
+                    `${r.score}%`,
+                    `"${r.time || ''}"`,
+                    `"${getPerformanceText(r.score)}"`
+                ];
+                csvContent += row.join(",") + "\n";
+            });
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `quiz_history_export_${new Date().toISOString().slice(0, 10)}.csv`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showToast('History exported as CSV', 'success');
         }
 
         function printHistory() {
             const hist = JSON.parse(localStorage.getItem('quizHistory')) || [];
             if (hist.length === 0) { showToast('No history to print', 'error'); return; }
-            let pc = `<html><head><title>Quiz History</title><style>body{font-family:Arial,sans-serif;padding:20px}.print-header{text-align:center;margin-bottom:30px}.print-title{font-size:24px;color:#1a5fb4;margin-bottom:10px}table{width:100%;border-collapse:collapse;margin-top:20px}th,td{border:1px solid #ddd;padding:10px;text-align:left}th{background-color:#f0f7ff;color:#1a5fb4}.footer{text-align:center;margin-top:40px;color:#666;font-size:12px}.performance{padding:4px 8px;border-radius:4px;font-weight:bold}.excellent{background-color:#d4edda;color:#155724}.good{background-color:#fff3cd;color:#856404}.average{background-color:#d1ecf1;color:#0c5460}.poor{background-color:#f8d7da;color:#721c24}</style></head><body><div class="print-header"><h1 class="print-title">Quiz History</h1><p>Report Date: ${new Date().toLocaleDateString('en-US')}</p><p>Total Records: ${hist.length}</p></div><table><thead><tr><th>Date</th><th>Name</th><th>Roll</th><th>Subject</th><th>Questions</th><th>Correct</th><th>Score</th><th>Time</th><th>Performance</th></tr></thead><tbody>`;
-            hist.forEach(r => pc += `<tr><td>${r.date} (${r.weekday})</td><td>${r.name}</td><td>${r.roll}</td><td>${r.category}</td><td>${r.totalQuestions}</td><td>${r.correct}</td><td>${r.score}%</td><td>${r.time}</td><td><span class="performance ${r.performance || 'average'}">${getPerformanceText(r.score)}</span></td></tr>`);
+            let pc = `<html><head><title>Quiz History</title><style>body{font-family:Arial,sans-serif;padding:20px}.print-header{text-align:center;margin-bottom:30px}.print-title{font-size:24px;color:#1a5fb4;margin-bottom:10px}table{width:100%;border-collapse:collapse;margin-top:20px}th,td{border:1px solid #ddd;padding:8px;text-align:left;font-size:13px}th{background-color:#f0f7ff;color:#1a5fb4}.footer{text-align:center;margin-top:40px;color:#666;font-size:12px}.performance{padding:4px 8px;border-radius:4px;font-weight:bold}</style></head><body><div class="print-header"><h1 class="print-title">Permanent Quiz Scoreboard &amp; History</h1><p>Report Date: ${new Date().toLocaleDateString('en-US')} | Total Records: ${hist.length}</p></div><table><thead><tr><th>Date</th><th>User Name</th><th>User ID</th><th>Roll</th><th>Subject</th><th>Total</th><th>Correct</th><th>Net Marks</th><th>Score</th><th>Time</th><th>Performance</th></tr></thead><tbody>`;
+            hist.forEach(r => pc += `<tr><td>${r.date} (${r.weekday})</td><td>${r.name}</td><td>${r.userId || 'N/A'}</td><td>${r.roll}</td><td>${r.category}</td><td>${r.totalQuestions}</td><td>${r.correct}</td><td>${r.netMarks != null ? r.netMarks : r.correct}</td><td>${r.score}%</td><td>${r.time}</td><td><span class="performance">${getPerformanceText(r.score)}</span></td></tr>`);
             pc += `</tbody></table><div class="footer"><p>This report was generated from Ismail Hossain's General Knowledge Quiz App</p><p>Website: ismailhossain627@yahoo.com | Mobile: 01728-295215</p></div></body></html>`;
-            const win = window.open('', '_blank'); win.document.write(pc); win.document.close(); win.focus(); win.print();
+            const win = window.open('', '_blank');
+            if (!win) { window.print(); return; }
+            win.document.write(pc); win.document.close(); win.focus(); win.print();
         }
 
         function saveCurrentResult() {
@@ -31361,9 +33240,9 @@ else { msg = 'You need to study more. Keep trying!'; perfCat = 'poor'; }
 
 function refreshScoreboardPanel() { updateScoreboardPanel(); showToast('Scoreboard refreshed', 'success'); }
 
-        function playMelodiousSound() { soundIndicator.classList.add('active'); setTimeout(() => soundIndicator.classList.remove('active'), 1000); melodiousSound.currentTime = 0; melodiousSound.play().catch(e => console.log(e)); }
-        function playSelectionSound() { soundIndicator.classList.add('active'); setTimeout(() => soundIndicator.classList.remove('active'), 1000); selectionSound.currentTime = 0; selectionSound.play().catch(e => console.log(e)); }
-        function playCelebrationSound() { celebrationSound.currentTime = 0; celebrationSound.play().catch(e => console.log(e)); }
+        function playMelodiousSound() { if (isSoundMuted) return; soundIndicator.classList.add('active'); setTimeout(() => soundIndicator.classList.remove('active'), 1000); melodiousSound.currentTime = 0; melodiousSound.play().catch(e => console.log(e)); }
+        function playSelectionSound() { if (isSoundMuted) return; soundIndicator.classList.add('active'); setTimeout(() => soundIndicator.classList.remove('active'), 1000); selectionSound.currentTime = 0; selectionSound.play().catch(e => console.log(e)); }
+        function playCelebrationSound() { if (isSoundMuted) return; celebrationSound.currentTime = 0; celebrationSound.play().catch(e => console.log(e)); }
 
         function showEnhancedCelebration() {
             celebrationContainer.style.display = 'block'; celebrationContainer.innerHTML = '';
@@ -31417,7 +33296,9 @@ function refreshScoreboardPanel() { updateScoreboardPanel(); showToast('Scoreboa
 
         function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
 
-        window.addEventListener('DOMContentLoaded', init);
+        let __quizAppInitialized = false;
+        function safeBootQuizApp() { if (__quizAppInitialized) return; __quizAppInitialized = true; init(); }
+        if (document.readyState === 'loading') { window.addEventListener('DOMContentLoaded', safeBootQuizApp); } else { safeBootQuizApp(); }
     </script>
 </body>
 </html>
